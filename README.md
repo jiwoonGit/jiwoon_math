@@ -6,19 +6,19 @@ Research manuscripts by Jiwoon Park on critical correlations in the square-latti
 
 ## Finite-size scaling with free boundaries
 
-The two papers in [FSS](FSS/) study the spread-out Ising model on a cube of side $n$ and volume $V=n^d$, for $d\in\{1,2,3,4\}$ and sufficiently large fixed spread radius $R$. The operator $(-\Delta_R)^{d/4}$ places each model at its upper critical dimension. Free boundaries are imposed by taking the power on the full lattice and then restricting to the cube.
+The two papers in [FSS](FSS/) study the spread-out Ising model on a cube of side $n$ and volume $V=n^d$, for $d\in\{1,2,3,4\}$ and sufficiently large fixed spread radius $R$. The operator $(-\Delta_R)^{d/4}$ places each model at its upper critical dimension.
 
 ### Pseudocritical point and susceptibility
 
-The first paper defines a finite-volume pseudocritical inverse temperature $\tau_n^{\mathrm{pc}}$ by requiring the effective potential of the principal mode to have zero curvature at the origin. At this point the susceptibility of the total spin satisfies
+The first paper defines a finite-volume pseudocritical inverse temperature $\tau_n^{\mathrm{pc}}$ by requiring the effective potential of the principal mode to have zero curvature at the origin. At this point, the susceptibility of the total spin satisfies
 
 $$
 \chi_n^F(\tau_n^{\mathrm{pc}})
-= \frac{1}{V}\operatorname{Var}_{\tau_n^{\mathrm{pc}}}^F\!\left(\sum_{x\in\Lambda_n}\sigma_x\right)
+= \frac{1}{V}{Var}_{\tau_n^{\mathrm{pc}}}^F\!\left(\sum_{x\in\Lambda_n}\sigma_x\right)
 \asymp \sqrt{V\log V}.
 $$
 
-In four dimensions this gives $n^2\sqrt{\log n}$. The companion paper shows that $\tau_n^{\mathrm{pc}}\to\tau_c$ and that the shift $\tau_n^{\mathrm{pc}}-\tau_c$ is at least $c_{d,R}n^{-d/2}$ for all sufficiently large $n$.
+In four dimensions, this gives $n^2\sqrt{\log n}$. The companion paper shows that $\tau_n^{\mathrm{pc}}\to\tau_c$ and that the shift $\tau_n^{\mathrm{pc}}-\tau_c$ is at least $c_{d,R}n^{-d/2}$ for all sufficiently large $n$.
 
 [Read the susceptibility paper (PDF)](FSS/FSS_FBC-dim-extension.pdf) · [LaTeX source](FSS/FSS_FBC-dim-extension.tex)
 
