@@ -1,0 +1,1613 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[margin=1in]{geometry}
+\numberwithin{equation}{section}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newcommand{\E}{\mathbb E}
+\newcommand{\R}{\mathbb R}
+\newcommand{\one}{\mathbf 1}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\newcommand{\Ga}{\mathcal R_\alpha}
+\newcommand{\Cspin}{\mathcal C_n}
+\allowdisplaybreaks
+\setlength\emergencystretch{2em}
+\title{Gaussian and non-Gaussian finite-size scalings of the
+spread-out Ising model at the free-boundary pseudocritical point}
+\author{Jiwoon Park}
+\date{\today}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For the critical weakly coupled $|\varphi|^4$ model with periodic
+boundary conditions, Park \cite{park-torus} showed that only the
+constant mode has enhanced fluctuations. Motivated by the shifted
+free-boundary critical window established by Michta, Park, and Slade
+\cite{michta-park-slade} for the hierarchical model, we study the
+spread-out Ising model at its free-boundary pseudocritical point.
+At the upper critical dimension we determine the exponential moments
+of the spin field tested against smooth real-valued functions vanishing
+on the boundary. For a nonzero test, the spin sum divided by its
+standard deviation has a quartic limiting law if the test overlaps
+the ground state and a standard Gaussian limit if it is orthogonal.
+In four dimensions the orthogonal susceptibility has order $n^2$
+in a box of side $n$, the scale obtained by Camia, Jiang, and Newman
+\cite{camia-jiang-newman} at bulk criticality under a mean-field
+two-point hypothesis. The lowest sine and the $(3,1,1,1)$ sine have
+different limiting laws, so it provides a counterevidence to the all-odd 
+classification of Flores-Sola, Berche, Kenna, and Weigel \cite{flores}.
+\end{abstract}
+
+
+\subsubsection*{Version note: you can find earlier versions on DOI:10.5281/zenodo.24167641}
+
+v1. November 20, 2026
+
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+\section{The model and the two susceptibility scales}
+
+We consider the spread-out Ising model on a box with free boundary condition:
+fix $d\in\{1,2,3,4\}$, $\alpha=d/4$, $s=2\alpha=d/2$,
+$\Lambda_n=\{1,\ldots,n\}^d$ and $V=n^d$.
+Let $D_R$ be the probability measure uniform on $0<|z|_\infty\le R$ in
+$\mathbb Z^d$, and set $L_R=I-D_R$.
+For inverse temperature $\tau >0$, we consider the measure on $\sigma \in\{-1,1\}^{\Lambda_n}$
+with weight proportional to
+\begin{align}
+ \exp\{-\tfrac12\tau\,\sigma^{\mathsf T}J_n\sigma\},\qquad
+ J_n=P_{\Lambda_n} L_R^\alpha P_{\Lambda_n}^* .
+ \label{eq:Hamiltonian}
+\end{align}
+where $P_{\Lambda_n} : \ell^2 (\mathbb{Z}^d) \rightarrow \ell^2 (\Lambda_n)$ 
+is the simple restriction to $\Lambda_n$ and $P_{\Lambda_n}^*$ extends by zero, 
+so the fractional power is taken before restriction to the box. 
+Fix $R$ sufficiently large. 
+For $n\ge n_0(R)$ choose the pseudocritical point
+$\tau=\tau^{\rm pc}_{\Lambda_n}$ constructed in \cite{base}. At this
+temperature the negative logarithm of the marginal density of the
+prescribed terminal coordinate has zero curvature at the origin.
+Section~2 of \cite{base} defines its principal direction.
+Flores-Sola et al.\ describe their pseudocritical temperature $T_L$
+using a finite-volume response peak \cite{flores}.
+
+At the free-boundary pseudocritical point, the variance of the total
+spin divided by the volume is of order $n^{d/2}\sqrt{\log n}$ in a box
+of side $n$ \cite{base}. 
+Does the second moment carry the factor $\sqrt{\log n}$ for any test function?
+The question comes from Table~I of Flores-Sola, Berche, Kenna and
+Weigel \cite{flores}.
+% , which assigns different pseudocritical scaling sector for $d>d_c$ according to the parity of Fourier mode of the test function.
+At $d=d_c$ we find that the logarithmic enhancement is determined by overlap with the ground state. 
+In the short-range model this singles out the lowest sine. In the long-range
+models the ground state is a superposition of infinitely many sines.
+The difference between overlap with the uniform field and overlap with
+the ground state can be seen explicitly in \eqref{eq:odd-pair}.
+
+Unless an inverse temperature is displayed explicitly, spin expectations
+are taken at the pseudocritical point.
+
+\begin{definition}[Ising measure at $\tau_{\Lambda_n}^{\mathrm{pc}}$]
+Write $\E_{\rm sp}$ for expectation under this spin law given by the weight \eqref{eq:Hamiltonian}
+and $G_{\rm sp}(x,y)=\E_{\rm sp}[\sigma_x\sigma_y]$ for its two-point function
+having \emph{\textbf{fixed} $\tau = \tau_{\Lambda_n}^{\mathrm{pc}}$}.
+\end{definition}
+
+We start with a remark that $\tau_{\Lambda_n}^{\mathrm{pc}}$ is a genuine shift from the
+bulk cricial point 
+$\tau_c=\tau_c(d,R)=\inf\{\tau>0:\langle\sigma_0\rangle_\tau^+>0\}$,
+where $\langle\cdot\rangle_\tau^+$ is the infinite-volume plus state for
+the interaction in \eqref{eq:Hamiltonian}. Write
+$\Delta_n=\tau_{\Lambda_n}^{\rm pc}-\tau_c$ and $(u)_+=\max\{u,0\}$.
+
+\begin{theorem}[Shift of the pseudocritical point]\label{thm:pc-shift}
+For $d\in\{1,2,3,4\}$ and sufficiently large fixed $R$,
+$\tau_{\Lambda_n}^{\rm pc}\to\tau_c$ as $n\to\infty$.
+For $n\ge n_1(d,R)$ one has $(\Delta_n)_+\le C_dR^{-d}$.
+For $d=1,2,3$ one also has
+\begin{equation}\label{eq:pc-shift-upper}
+ (\Delta_n)_+\le C_{d,R}
+ \begin{cases}
+   n^{-1/10}(\log n)^{1/10}, & d=1,3,\\
+   n^{-1/5}(\log n)^{1/2}, & d=2 .
+ \end{cases}
+\end{equation}
+There is $c_{d,R}>0$ such that, for all sufficiently large $n$,
+\begin{equation}\label{eq:pc-shift}
+ \Delta_n\ge c_{d,R}\,n^{-s}=c_{d,R}\,n^{-d/2}.
+\end{equation}
+\end{theorem}
+
+Refinement of this theorem is of seperate interest. Since the theorem is
+independent of the rest of the article, we isolate the proof in Appendix~\ref{app:shift}.
+
+
+\paragraph{Spin observables.}
+
+All lattice and continuum test functions are real-valued. For lattice
+vectors we use the counting-measure scalar product
+$\ip{f}{h}=f^{\mathsf T}h$. The spin sum is
+$S_n(f)=\ip{f}{\sigma}=\sum_{x\in\Lambda_n} f(x)\sigma_x$.
+On $\Omega = (0,1)^d$, define the continuum sines for
+$k\in\mathbb N^d$, where $\mathbb N=\{1,2,\ldots\}$, and their
+lattice samples for $1\le k_i\le n$ by
+\begin{equation}
+ e_k(z)=2^{d/2}\prod_{i=1}^d\sin(\pi k_i z_i),\qquad
+ f_n(F)(x)=(n+1)^{-d/2}F(x/(n+1)),\qquad \phi_{k,n}=f_n(e_k).
+\end{equation}
+The lattice sines are orthonormal and vanish on the Dirichlet planes
+$x_i=0,n+1$. Write $k_g=(1,\ldots,1)$, $e_g=e_{k_g}$ and
+$\phi_{g,n}=\phi_{k_g,n}$. The covariance and $F$-susceptibility of
+sampled tests are
+\begin{equation}
+ \Cspin(F,H)=\E_{\rm sp}[S_n(f_n(F))S_n(f_n(H))]
+             =f_n(F)^{\mathsf T}G_{\rm sp} f_n(H),\qquad \chi_n(F)=\Cspin(F,F).
+\end{equation}
+Thus $\chi_{k,n}=\chi_n(e_k)$ is the susceptibility of a unit sine,
+and the lattice test $V^{-1/2}\one$ gives the uniform susceptibility.
+
+\paragraph{The continuum operator.}
+Let $\Omega = (0,1)^d$ be equipped with Lebesgue measure.
+Let $H_\alpha$ be the self-adjoint operator of the closed form
+\begin{equation}
+ \mathcal E_\alpha(F,F)=\int_{\R^d}|\xi|^{2\alpha}
+       |\widehat{\widetilde F}(\xi)|^2\,d\xi ,
+ \qquad \widetilde F\in H^\alpha(\R^d),\quad
+ \widetilde F=0 \text{ off }\overline\Omega ,
+ \label{eq:form}
+\end{equation}
+where $\widetilde F$ is the zero extension of $F$ and
+$\widehat u(\xi)=(2\pi)^{-d/2}\int e^{-ix\cdot\xi}u(x)\,dx$.
+Write $\mu_1<\mu_2\le\cdots$ for the eigenvalues, counted with
+multiplicity, and $w$ for the nonnegative $L^2$-unit ground state.
+The reduced resolvent $\Ga$ inverts $H_\alpha-\mu_1$ on $w^\perp$.
+We use
+\begin{equation}
+ \Ga w=0,\qquad
+ \Ga|_{w^\perp}=(H_\alpha-\mu_1)^{-1}|_{w^\perp},\qquad
+ I_4=\int_\Omega w^4,\qquad b_F=\ip{w}{F}.
+\end{equation}
+For sine tests write $b_k=b_{e_k}$ and $b_g=b_{e_g}>0$. The
+positivity follows from $e_g>0$ in $\Omega$ and $w\ge0$, $\|w\|_2=1$.
+In dimension four $H_1$ is the ordinary Dirichlet Laplacian. For
+$0<\alpha<1$, \eqref{eq:form} defines the restricted fractional
+Laplacian. We call the principal direction the non-Gaussian mode and the
+directions in $w^\perp$ the Gaussian modes.
+Write $g=g_n\asymp_{d,R}(\log V)^{-1}$ for the terminal quartic
+coefficient at the matched point. Let $W_4$ be a real random variable
+with density proportional to $e^{-x^4/4}$. Its Laplace transform
+and variance are
+\begin{equation}
+ \Phi_4(t)=\frac{\int_{\R}e^{tx-x^4/4}\,dx}
+                  {\int_{\R}e^{-x^4/4}\,dx},\qquad
+ v_4=\E W_4^2=\frac{2\Gamma(3/4)}{\Gamma(1/4)}.
+ \label{eq:quartic-transform}
+\end{equation}
+
+\begin{theorem}[Susceptibility and exponential moments] \label{thm:tests}
+Let $F\in C^\infty(\overline\Omega;\R)$ vanish on the faces and set
+$X=S_n(f_n(F))$. With the positive spin amplitudes in
+\eqref{eq:amplitudes}, the following asymptotics hold as $n\to\infty$
+at fixed sufficiently large $R$. The exponential-moment estimates
+are uniform for $\theta$ in bounded real intervals.
+\begin{itemize}
+\item \emph{Non-Gaussian scaling.} If $b_F\ne0$, then
+\begin{equation}
+ \chi_n(F)=\frac{n^s}{\sqrt g}\, A_n^{\rm NG}b_F^2(1+o(1)).
+ \label{eq:ng-susceptibility}
+\end{equation}
+\begin{equation}
+ \E_{\rm sp}\exp\!\left(\theta g^{1/4}n^{-s/2}X\right)
+   =\Phi_4\!\left(\theta b_F\sqrt{A_n^{\rm NG}/v_4}\right)+o(1).
+ \label{eq:ng-laplace}
+\end{equation}
+\item \emph{Gaussian scaling.} If $b_F=0$, then
+\begin{equation}
+ \chi_n(F)=n^s A_n^{\rm G}\ip{F}{\Ga F}+o(n^s).
+ \label{eq:g-susceptibility}
+\end{equation}
+\begin{equation}
+ \E_{\rm sp}\exp\!\left(\theta n^{-s/2}X\right)
+   =\exp\!\left(\tfrac12\theta^2 A_n^{\rm G}\ip{F}{\Ga F}\right)+o(1).
+ \label{eq:g-laplace}
+\end{equation}
+\end{itemize}
+\end{theorem}
+
+This theorem is an analogue of \cite[Theorem~1.9]{park-torus}.
+The moments here are computed at $\tau_{\Lambda_n}^{\rm pc}$.
+Appendix~\ref{app:shift} shows that this inverse temperature converges to
+the bulk critical point and lies at least $c_{d,R}n^{-d/2}$ above it
+for all sufficiently large $n$.
+
+For $F\ne0$, division by the spin standard deviation removes the
+possibly $n$-dependent amplitude. Theorem~\ref{thm:tests} then gives
+\begin{equation}
+ \frac{X}{\sqrt{\chi_n(F)}}\ \xrightarrow{\ \mathrm{law}\ }\
+ \begin{cases}
+ W_4/\sqrt{v_4}, & b_F\ne0,\\
+ N(0,1), & b_F=0 .
+ \end{cases}
+ \label{eq:standardized-laws}
+\end{equation}
+The symmetry of $W_4$ removes the sign of $b_F$ in the first limit.
+
+
+% The Gaussian coefficient is strictly positive for $F\ne0$ in $w^\perp$.
+% The corresponding spin sums with bounded second moments are
+% $g^{1/4}n^{-s/2}S_n(f_n(F))$ in \eqref{eq:ng-susceptibility} and
+% $n^{-s/2}S_n(f_n(F))$ in \eqref{eq:g-susceptibility}. For every fixed sine
+% index $k$, take $F=e_k$.
+
+% The spin amplitude cancels in the ratio of two mode susceptibilities,
+% giving
+% \[
+%  \lim_{n\to\infty}\frac{\chi_{k,n}}{\chi_{k_g,n}}
+%     =\frac{|\int_\Omega w(z)e_k(z)\,dz|^2}
+%            {|\int_\Omega w(z)e_g(z)\,dz|^2}.
+% \]
+% When the numerator vanishes, \eqref{eq:g-susceptibility} gives the leading term
+% at the smaller scale.
+
+Two tests can couple to the same non-Gaussian mode. To determine their covariance
+to accuracy $o(n^s)$, we retain the finite-volume susceptibility
+$\chi_{k_g,n}$ in the principal term. Its relative asymptotic in
+\eqref{eq:ng-susceptibility} alone allows an error larger than $n^s$. Put
+\begin{equation}
+ j_F=F-\frac{b_F}{I_4}w^3,\qquad
+ \mathcal B(F,H)=\ip{j_F}{\Ga j_H},\qquad r_F=b_F/b_g.
+\end{equation}
+The map $F\mapsto j_F$ is the projection onto $w^\perp$ along $w^3$,
+since $\ip{w}{w^3}=I_4$. The direction $w^3$ comes from the first
+derivative of the quartic potential.
+\begin{theorem}[Mixed moments at the Gaussian scale]\label{thm:mixed}
+For fixed smooth $F,H$ vanishing on the faces as in Theorem~\ref{thm:tests},
+\begin{equation}
+ \Cspin(F,H)=r_F r_H\,\chi_{k_g,n}
+ + n^s A_n^{\rm G}
+    \left[\mathcal B(F,H)-r_F r_H \mathcal B(e_g,e_g)\right]+o(n^s).
+ \label{eq:mixed}
+\end{equation}
+In particular, if $b_F=b_H=0$, then
+$n^{-s}\Cspin(F,H)=A_n^{\rm G}\ip{F}{\Ga H}+o(1)$.
+\end{theorem}
+
+\subsection{Related works}
+\label{sec:literature}
+
+\paragraph{Temperature shift and rounding.}
+Fisher and Barber distinguished the displacement of a finite-system
+transition from the width of the temperature interval over which it is
+rounded \cite{fisher-barber}. The distinction matters for a free box
+when the bulk critical temperature lies outside the finite-volume
+critical window. For periodic systems, Br\'ezin and Zinn-Justin
+integrated out the nonconstant modes to obtain an effective Hamiltonian
+for the spatial average \cite{brezin-zinnjustin}. Its quartic term
+controls the fluctuations of the average even when the renormalised
+coupling tends to zero. Rudnick, Gaspari and Privman used standing
+waves to analyse the shift of the transition and the susceptibility in
+a free Ising box above four dimensions \cite{rudnick}. In simulations
+of the five-dimensional Ising model, Wittmann and Young found free-box
+susceptibility scaling as $L^2$ at the bulk critical temperature and as
+$L^{5/2}$ near the finite-volume pseudocritical temperature, where $L$
+denotes the side length \cite{wittmann}.
+
+\paragraph{Role of the Fourier modes on the finite-size scaling.}
+Wittmann and Young proposed that the all-odd sines inherit the scaling
+of the uniform magnetization through their nonzero spatial means.
+Their mode susceptibility measurements included the index $(2,1,1,1,1)$,
+whose spatial mean vanishes \cite[Sec.~V.B]{wittmann}.
+Flores-Sola et al.\ gave the prediction separately for each boundary
+condition and temperature \cite[Table~I]{flores}. Write $s$ for their
+dispersion exponent $\sigma$, with $s=2$ for short-range interactions.
+For $d>2s$ and free boundaries at $T_L$, they assign all-odd indices
+to the $Q$ sector, with susceptibility of order $L^{d/2}$. An even
+entry places the index in the Gaussian ($G$) sector, with susceptibility
+of order $L^s$. At the bulk critical temperature their free-boundary
+row gives Gaussian scaling for both classes. Their figures compare
+the total magnetization and the lowest $G$ modes in five-dimensional
+short-range and one-dimensional long-range Ising models.
+The total magnetization alone cannot distinguish the contributions of
+two individual all-odd sines.
+
+Honchar, Berche, Holovatch and Kenna subsequently compared the two
+all-odd indices $(1,1,1,1,1)$ and $(3,1,1,1,1)$ on a five-dimensional
+free box \cite[Fig.~7]{honchar}. They took sine coefficients of a
+magnetization profile formed by aligning each spin configuration with
+the sign of its total magnetization. The fitted slopes were $-1.26$
+and $-1.41$, respectively, and the authors left the asymptotic
+interpretation of the mode data open. The quantity $\chi_{k,n}$ studied
+here is the second moment of the sine coefficient of a spin
+configuration before alignment.
+
+\paragraph{Logarithms at the upper critical dimension.}
+At $d=2s$ the two powers printed in Table~I coincide. The quartic
+fluctuation can nevertheless be detected by its multiplicative
+logarithm. For periodic long-range Ising models, Luijten and Bl\"ote
+found the predicted logarithmic correction to the uniform susceptibility
+at the marginal decay exponent \cite{luijten}. Lv, Xu, Sun, Chen and
+Deng measured the distinction directly in periodic four-dimensional
+$O(N)$ models with $N=1,2,3$. The uniform susceptibility grew as
+$L^2\sqrt{\log L}$ and the sampled nonzero Fourier modes grew as $L^2$
+\cite{lv}. For the weakly coupled $|\varphi|^4$ model on a Euclidean
+torus, Park proved the distinction between the zero and nonzero Fourier
+susceptibilities, including the marginal logarithm
+\cite[Corollary~1.10]{park-torus}. Translation invariance makes the
+constant function the principal mode in these periodic examples.
+The free-box calculation requires its spatial profile.
+
+\paragraph{Rigorous results for free boxes and critical windows.}
+For the nearest-neighbour Ising model in $d>4$, Camia, Jiang and
+Newman deduced order $L^2$ for the free-box susceptibility at the bulk
+critical temperature from mean-field decay of the infinite-volume
+two-point function \cite{camia-jiang-newman}. The bounds of
+Duminil-Copin and Panis establish that decay for every $d\ge5$
+\cite{duminil-panis}.
+For the hierarchical $|\varphi|^4$ model, Michta, Park and Slade
+proved that the spatial average has the same quartic scaling law in
+the periodic and free-boundary windows about their respective effective
+critical points. Above four dimensions the free-boundary shift has
+order $L^{-2}$ and the window width has order $L^{-d/2}$
+\cite{michta-park-slade}. Park and Slade also obtained the two-point
+plateau in these windows, including the logarithmic correction in four
+dimensions \cite{park-slade}. For Euclidean lattices, Liu, Park and
+Slade connect the periodic susceptibility and the plateau to estimates
+on the infinite lattice. Their Conjecture~6 concerns the susceptibility
+and two-point profiles in a shifted free-boundary window above the upper
+critical dimension \cite{liu-park-slade}. At the matched temperature
+studied here, Theorems~\ref{thm:tests} and~\ref{thm:mixed} give the
+spatial profile of the enhanced fluctuation and the covariance on its
+orthogonal complement.
+
+
+\subsection{Sine modes and the orthogonality condition}\label{sec:sines}
+
+For every $n$ and every lattice test $f$, Fourier expansion in the
+Dirichlet sine basis gives the exact identities
+\begin{align}
+ M^{(n)}_{kl}
+  &=\sum_{x,y\in\Lambda_n}\phi_{k,n}(x)G_{\rm sp}(x,y)\phi_{l,n}(y),
+ &\chi_{k,n}&=M^{(n)}_{kk},\label{eq:matrix}\\
+ f&=\sum_k d_k\phi_{k,n},\qquad d_k=\ip{\phi_{k,n}}{f},
+ &\E_{\rm sp}[S_n(f)^2]&=\sum_{k,l}d_k M^{(n)}_{kl}d_l .
+ \label{eq:exact}
+\end{align}
+If $f\perp\phi_{g,n}$ the sum in \eqref{eq:exact} ranges over
+$k,l\ne k_g$. Reflection of coordinate $i$ about $(n+1)/2$ multiplies
+the $k$th sine by $(-1)^{k_i+1}$ and preserves the spin law.
+Consequently $M^{(n)}_{kl}=0$ whenever $k_i,l_i$ have different parity
+for some $i$. The ground state $w$ is invariant under these reflections
+by simplicity. Thus $b_k=0$ if any $k_i$ is even. Write
+$F_k=\ip{e_k}{F}$ for the continuum sine coefficients and
+$|k|^2=\sum_{i=1}^d k_i^2$.
+
+\begin{corollary}[Tests orthogonal to the lowest sine]\label{cor:complement}
+In $d=4$, we have $w=e_g$, $I_4=(3/2)^d$, and $b_g=1$. For each fixed
+$k\ne k_g$ the susceptibility is
+\begin{equation}
+ \chi_{k,n}=\frac{n^2 A_n^{\rm G}}
+                   {\pi^2(|k|^2-d)}+o(n^2).
+\end{equation}
+For all fixed $k,l\ne k_g$, including distinct indices in a degenerate
+eigenspace,
+\begin{equation}
+ M^{(n)}_{kl}=n^2 A_n^{\rm G}
+       \frac{\delta_{kl}}{\pi^2(|k|^2-d)}+o(n^2).
+\end{equation}
+If $F\perp e_g$ is as in Theorem~\ref{thm:tests}, its susceptibility is
+\begin{equation}
+ \chi_n(F)=n^2 A_n^{\rm G}
+       \sum_{k\ne k_g}\frac{F_k^2}{\pi^2(|k|^2-d)}+o(n^2).
+ \label{eq:d4sum}
+\end{equation}
+
+In dimensions one through three take the same class of fixed smooth
+tests $F\perp e_g$ vanishing on the faces, and write
+$b_F=\sum_{k\ne k_g} b_k F_k$. If $b_F\ne0$, its leading
+susceptibility is \eqref{eq:ng-susceptibility}, with the square of this sum.
+If $b_F=0$, its leading susceptibility is \eqref{eq:g-susceptibility}, with
+\begin{equation}
+ \ip{F}{\Ga F}=\lim_{N\to\infty}
+ \sum_{\substack{k,l\ne k_g\\ |k|_\infty,|l|_\infty\le N}}
+      F_k F_l\ip{e_k}{\Ga e_l}.
+ \label{eq:fracsum}
+\end{equation}
+For each fixed $k$ with $b_k=0$, the Gaussian coefficient in
+\eqref{eq:g-susceptibility} is explicitly the spectral sum
+$\sum_{j\ge2}\ip{w_j}{e_k}^2/(\mu_j-\mu_1)$, in any real orthonormal
+eigenbasis of $H_\alpha$ ordered so that $H_\alpha w_j=\mu_jw_j$
+and $w_1=w$. Equation~\eqref{eq:mixed}
+with $F=e_k$, $H=e_l$ gives the corresponding off-diagonal entries.
+\end{corollary}
+
+\begin{proof}
+The eigenpairs of $H_1$ are $(\pi^2|k|^2,e_k)$. Inserting them into
+\eqref{eq:g-susceptibility} and \eqref{eq:mixed} gives the four-dimensional
+assertions. For fractional powers, Parseval gives the stated expression
+for $b_F$ and the spectral theorem gives the sum over $w_j$. Since
+$\|\Ga\|=(\mu_2-\mu_1)^{-1}$, rectangular sine truncations converge
+in its quadratic form for every $F\in L^2$. The susceptibility
+asymptotic for a smooth $F$ is proved directly for its sampled source
+in Section~\ref{sec:proof}. The infinite series in \eqref{eq:d4sum}
+and \eqref{eq:fracsum} therefore require only convergence in the
+bounded continuum form.
+\end{proof}
+
+\paragraph{A counterexample to the all-odd criterion at $d=d_c$.}
+In four dimensions take $k_*=(3,1,1,1)$. Integrating the sines gives
+$\int_\Omega e_{k_*}=\tfrac13\int_\Omega e_g>0$.
+Both sines thus couple to a uniform applied field. Their projections
+onto the non-Gaussian mode are $b_g=1$ and $b_{k_*}=0$, since $w=e_g$.
+The Dirichlet eigenvalue gap is
+$\pi^2(|k_*|^2-|k_g|^2)=8\pi^2$. Corollary~\ref{cor:complement} gives
+\begin{equation}
+ \chi_{k_*,n}=\frac{n^2 A_n^{\rm G}}{8\pi^2}+o(n^2),
+ \qquad
+ \frac{\chi_{k_*,n}}{\chi_{k_g,n}}\asymp(\log n)^{-1/2}
+ \longrightarrow 0 .
+ \label{eq:odd-pair}
+\end{equation}
+Thus two indices in the all-odd column of Table~I have different
+susceptibility scales at the upper critical dimension. This disproves
+the extension of its free-boundary $Q$ assignment to $d=2s$.
+Testing the power-law assignment in the table's stated range requires
+a mode estimate for $d>2s$.
+
+For $0<\alpha<1$, reflection symmetry still rules out enhancement
+whenever an index has an even entry. The fractional ground state has infinitely many
+nonzero higher sine coefficients, as proved in
+Appendix~\ref{app:sine-support}. Choose two such indices $k,l$.
+The test $F=b_l e_k-b_k e_l$ is orthogonal to both $e_g$ and $w$.
+Its susceptibility has order $n^s$, although the two diagonal
+contributions in \eqref{eq:exact} each have order $n^s/\sqrt g$.
+Their leading terms cancel with the mixed moment.
+
+% \paragraph{Sampling an orthogonal test.}
+% For $F\perp e_g$ as above set
+% \begin{equation}
+%  f_n^\perp=f_n(F)-\phi_{g,n}\ip{\phi_{g,n}}{f_n(F)}.
+% \end{equation}
+% This gives exact orthogonality. The subtracted coefficient is the
+% product trapezoidal sum for $e_gF$, since the integrand vanishes on
+% every face. Its integral is zero, so the coefficient is $O_F(n^{-2})$
+% by the one-dimensional trapezoidal error in each coordinate. For a
+% finite sum of higher sines it is zero once all are represented. For any
+% sequence of tests $v_n$ with $\sup_n\sqrt V\,\|v_n\|_\infty<\infty$, entrywise
+% nonnegativity of $G_{\rm sp}$ and the uniform-source theorem give
+% $\E_{\rm sp}[S_n(v_n)^2]=O(n^s/\sqrt g)$.
+% Cauchy--Schwarz therefore bounds the change in each fixed covariance
+% caused by this projection by $O_F(n^{-2}n^s/\sqrt g)=o(n^s)$.
+% For exponential moments, $|S_n(\phi_{g,n})|\le\sqrt V=n^s$ in every
+% configuration. At either normalization the change in the exponent
+% is therefore $O_{F,D}(n^{s/2-2})=o(1)$ for $|\theta|\le D$, so
+% \eqref{eq:ng-laplace} and \eqref{eq:g-laplace} also hold for
+% $S_n(f_n^\perp)$. More
+% generally, if $b_F=0$, the $L^2$ norms of the spin sums tested by
+% $f_n(F)$ and $\phi_{g,n}$ are respectively $O(n^{s/2})$ and
+% $O(n^{s/2}g^{-1/4})$. Hence adding $\delta_n\phi_{g,n}$ to $f_n(F)$
+% changes its variance by $o(n^s)$ whenever $|\delta_n|=o(g^{1/4})$.
+% For a fixed $F\perp w$, Lemma~\ref{lem:spectrum} gives a power-law
+% bound on the error in sampling the principal profile. The finite-volume
+% identities \eqref{eq:matrix}--\eqref{eq:exact} apply to every lattice
+% test.
+
+\section{Proof of the susceptibility formulas}\label{sec:proof}
+
+The origin of the two scales can be seen from a single field
+configuration $z=au$, with $u$ a principal profile of order
+$V^{-1/2}$ per site. Its quartic energy has order $ga^4/V$, so the
+second moment of $a$ has order $(V/g)^{1/2}=n^s/\sqrt g$. Projecting
+away that direction leaves a covariance of order $n^s$. To recover its
+coefficient for spins we follow a spatially varying magnetic source
+through the Gaussian integrations and retain the derivative of the
+quartic potential.
+
+\subsection{The principal profile and the reduced Green operator}
+\label{sec:spectrum}
+
+Use the isometric cell embedding \(U_n\) that sends a lattice vector \(v\)
+to the function with value \(n^{d/2}v_x\) on
+\(\prod_i((x_i-1)/n,x_i/n)\), extended by zero outside \(\Omega\).
+Its adjoint takes normalized cell averages. Write
+\(\mathcal D(u)=\mathcal E_\alpha(u,u)\) for the form in \eqref{eq:form}.
+The first estimate below controls the error in the overlap with $w$.
+A rate is needed because its squared overlap is multiplied by
+$n^s/\sqrt g$. The second estimate identifies the coefficient on
+the $n^s$ scale.
+
+\begin{lemma}[Principal profile and reduced covariance]\label{lem:spectrum}
+Take the prescribed Gaussian reference of \cite[Section~2]{base}, with
+\(B-A=\zeta J_n\), bulk row sum \(p=\sum_z A_\infty(z)>0\), and
+\(G=a_R(A^{-1}-c'B^{-1})^{-1}\). Let \(\ell\) be the positive
+solution of \(A\ell=\eta_1 B\ell\) for the largest generalized
+eigenvalue \(\eta_1=\eta_{1,n}\), normalized by
+\(\ell^{\mathsf T}B\ell=1\). Put
+\begin{equation}
+ u_*=B\ell,\qquad
+ G_h=G-(\ell^{\mathsf T}G\ell)u_*u_*^{\mathsf T}.
+\end{equation}
+At fixed \(R\), for \(\delta=s/16\),
+\begin{equation}
+ \|U_n u_*-\sqrt p\,w\|_{L^2}=O_R(n^{-\delta}).
+\end{equation}
+For any lattice sequences \(v_n,z_n\) with \(U_n v_n\to v\) and
+\(U_n z_n\to z\) in \(L^2(\Omega)\),
+\begin{equation}
+ n^{-s}\langle v_n,G_h z_n\rangle
+ \longrightarrow \frac{a_Rp^2}{\zeta\kappa_R}
+                      \langle v,\mathcal R_\alpha z\rangle .
+\end{equation}
+\end{lemma}
+
+Proposition~2.7 of \cite{base} controls the first generalized
+eigenvalue and the gap in the box. Appendix~\ref{app:spectral}
+compares the walk form with \eqref{eq:form} to obtain the rate for
+the principal eigenvector and the limit of the reduced covariance.
+For smooth $F$ the sampling satisfies
+$\|U_nf_n(F)-F\|_2=O_F(n^{-1})$. Indeed the sample point and any
+point in its cell differ by $O(n^{-1})$, and the ratio of the two
+normalizing factors is $(n/(n+1))^{d/2}=1+O(n^{-1})$.
+
+
+\subsection{Smooth sources and the spin normalization}\label{sec:sources}
+
+The microscopic split replaces a spin source $f$ by a convolution of
+$f$ restricted to the cube. For a signed source it is important to
+bound the boundary error on the $n^s$ scale, even if the variance of
+the source itself is larger. Lemma~\ref{lem:sources} gives that bound.
+
+Let $\psi$ denote the full canonical field in the coordinates used at
+the final integration. Its Gaussian reference has covariance $\Sigma$.
+In the original coordinates the reference covariance is $G$ of
+Lemma~\ref{lem:spectrum}. The change of field is given by
+\begin{equation}
+ \Sigma=tG+\varepsilon a_R A,\qquad S=G\Sigma^{-1},\qquad
+ h_{\rm phys}=a_R^{-1/2}S\psi .
+\end{equation}
+For $d\le3$ this gives $\Sigma=G$ and $S=I$. For $d=4$ it is the
+change of variables of \cite[Lemma~7.10]{base} at the prescribed match.
+Write $\E_{\rm full}$ for expectation under the interacting law of
+$\psi$. For a covariance $D$, write $\E_D$ for expectation under
+the centred Gaussian of covariance $D$.
+
+In the reference measure write $\psi=\psi_<+\psi_T$ as a sum of
+independent Gaussian fields of covariances $C_<$ and $C_T$.
+Thus $\Sigma=C_<+C_T$. The renormalisation group integrates $\psi_<$ first. Regressing
+$\psi_T$ on its principal coordinate $a=\ell^{\mathsf T}\psi_T$ gives
+\begin{align}
+ \sigma_T^2&=\ell^{\mathsf T}C_T\ell,\qquad
+ u=C_T\ell/\sigma_T^2,\qquad \psi_T=au+Y, \\
+ C_h&=C_T-\sigma_T^2uu^{\mathsf T},\qquad
+ K=C_<+C_h=\Sigma-\sigma_T^2uu^{\mathsf T}. \label{eq:cov-split}
+\end{align}
+Here $a$ and $Y$ are independent under the reference measure, with
+laws $N(0,\sigma_T^2)$ and $N(0,C_h)$. Thus $u$ is the terminal
+regression profile and $u_*=B\ell$ is the profile for the full
+reference. In $d=4$, $a$ in \eqref{eq:cov-split} is the coordinate
+of the transformed field at cut $k$. The estimates below use its
+distribution at the temperature selected by $a_0$. The terminal
+test norm $E_n$ in \cite[Section~7.1]{base} is the weighted
+difference norm specified in Appendix~\ref{app:slices}.
+
+\begin{lemma}[Source directions and the return to spins]\label{lem:sources}
+Let \(F,H\) be smooth on \(\overline\Omega\) and vanish on
+\(\partial\Omega\). Put
+\(f=f_n(F)=(n+1)^{-d/2} F(\cdot/(n+1))\) and \(h=f_n(H)\).
+At fixed \(d,R\) the source and covariance satisfy
+\begin{equation}
+ \|C_<\|_{2\to2}+\|K\|_{2\to2}=O_R(n^s),\qquad
+ \|C_< f\|_{E_n}+\|Kf\|_{E_n}=O_{R,F}(1).
+\end{equation}
+For the same tests, the covariance of the spins satisfies
+\begin{equation}
+ \mathcal C_n(F,H)=\frac{1}{\beta a_R m^2}
+ \E_{\rm full}\!\left[\ip{f}{\psi}\ip{\psi}{h}\right]+o_{R,F,H}(n^s).
+\end{equation}
+Set $c_{\rm sp}=1/(m\sqrt{\beta a_R})$. For every
+fixed $D<\infty$, uniformly for real $|\theta|\le D n^{-s/2}$,
+\begin{equation}
+ \E_{\rm sp}e^{\theta S_n(f)}
+   =(1+o(1))\,\E_{\rm full}e^{\theta c_{\rm sp} f^{\mathsf T}\psi}.
+ \label{eq:spin-laplace-transfer}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Appendix~\ref{app:slices} proves the bounds on $C_<$ and $K$ by
+summing the covariance slices with a smooth source. To transfer the
+covariance to spins, use the exact Hubbard--Stratonovich representation
+in physical units,
+\begin{equation}
+ h_{\rm phys}=a_R^{-1/2}S\psi
+ =\sqrt\beta A\sigma+\eta_{\rm phys},\qquad
+ \eta_{\rm phys}\sim N(0,A)
+\end{equation}
+in law, with independent noise. If \(v=S^{-\mathsf T}f\) and
+\(v_h=S^{-\mathsf T}h\), its covariance identity is
+\begin{equation}
+ a_R^{-1}\E_{\rm full}[\ip{f}{\psi}\ip{\psi}{h}]
+   =\beta(Av)^{\mathsf T}G_{\rm sp}(Av_h)+v^{\mathsf T}Av_h.
+\end{equation}
+The noise term \(v^{\mathsf T}Av_h\) is \(O_{R,F,H}(1)\), since \(A\) and
+\(S^{-\mathsf T}\) are uniformly bounded on \(\ell^2\) at fixed \(R\).
+
+For some \(0<\gamma<\min\{1,s\}\) the clipped rows satisfy
+\(\|Af-pf\|_\infty=O_{R,F}(n^{-s-\gamma})\).
+Indeed the zero extension of \(F\) is Lipschitz, and the bulk
+kernel of \(A\) has a finite absolute \(\gamma\)-moment. For
+the fractional split the tail expansion has coefficients
+\(O(j^{-1-s/2})\), and the \(j\)-step spread-out walk
+has \(\gamma\)-moment at most \(C_R j^{\gamma/2}\). In dimension
+four the kernel has finite range. Transposing
+$S^{-1}=\Sigma G^{-1}=I-\varepsilon c'AB^{-1}$ gives
+\(S^{-\mathsf T}=I-\varepsilon c' B^{-1}A\). Since \(B\) has bulk
+row sum \(p\), finite range, and uniformly bounded inverse in
+absolute row norm, \(Bf=pf+O_{R,F}(n^{-s-1})\) pointwise implies
+\(B^{-1}f=p^{-1}f+O_{R,F}(n^{-s-1})\). The preceding bounds give
+\begin{equation}
+ Av=m f+O_{R,F}(n^{-s-\gamma})\quad\text{in supremum norm}.
+\end{equation}
+The same identity in lower dimensions uses \(m=p\).
+
+Ferromagnetic positivity and the uniform susceptibility bound in
+\cite[Lemma~7.5 and Theorem~1.1]{base} give \(G_{\rm sp}(x,y)\ge0\)
+and
+\(\sum_{x,y}(G_{\rm sp})_{xy}=O_R(V n^s\sqrt{\log n})\).
+Consequently each error term in replacing \((Av)^{\mathsf T}G_{\rm sp}(Av_h)\)
+by \(m^2 f^{\mathsf T}G_{\rm sp}h\) is
+\(O_{R,F,H}(n^{s-\gamma}\sqrt{\log n})=o(n^s)\).
+The factors \(\beta\) and \(m\) are bounded above and away from
+zero at fixed \(R\). This proves the covariance formula.
+
+For exponential moments we need a bound on the source error for
+each spin configuration. Let $r=Av-mf$. In $d\le3$ choose
+$s/2<\gamma<\min\{1,s\}$ in the clipped-row estimate above. Since
+$V=n^{2s}$, we have $\|r\|_1=O(n^{s-\gamma})=o(n^{s/2})$.
+In $d=4$ the kernels $A$ and $B$ are symmetric and have finite
+range at fixed $R$. In an interior row, Taylor expansion of $F$ and
+cancellation of the linear term give errors $O_{R,F}(n^{-s-2})$
+in $Af-pf$ and $Bf-pf$. In the fixed-width boundary collar,
+$F|_{\partial\Omega}=0$ gives errors $O_{R,F}(n^{-s-1})$ on
+$O_R(n^{d-1})$ sites. Both $\ell^1$ errors are therefore
+$O_{R,F}(n^{s-2})=O_{R,F}(1)$. The identity
+$AB^{-1}Af-pf=(A-pI)f+AB^{-1}(A-B)f$ gives the same bound for
+$r$ because $A$ and $B^{-1}$ have bounded absolute column sums.
+Thus $|\theta r^{\mathsf T}\sigma|\le|\theta|\|r\|_1=o(1)$ at
+the stated scales in every dimension.
+
+The independent Gaussian noise in the Hubbard--Stratonovich identity
+gives the exact relation
+\begin{equation}
+ \E_{\rm full} e^{\theta c_{\rm sp} f^{\mathsf T}\psi}
+ =\exp\!\left(\frac{\theta^2 v^{\mathsf T}Av}{2\beta m^2}\right)
+   \E_{\rm sp}\exp\!\left(\frac{\theta}{m}(Av)^{\mathsf T}\sigma\right).
+\end{equation}
+The first factor tends uniformly to one since $v^{\mathsf T}Av=O(1)$.
+The pointwise error estimate gives \eqref{eq:spin-laplace-transfer}.
+\end{proof}
+
+\subsection{Quartic moments of the principal coordinate}\label{sec:terminal}
+
+Let $F_{\rm in}$ be the density of the full interacting field relative
+to its Gaussian reference, up to a constant. Integration of the
+earlier scales gives $F_T(z)=\E_{C_<}[F_{\rm in}(z+\psi_<)]$, up
+to a positive field-independent factor. Thus the interacting law of
+$\psi_T$ is the Gaussian law of covariance $C_T$ weighted by
+$F_T(\psi_T)/Z$, where $Z=\E_{C_T}[F_T(\psi_T)]$.
+Write $D_v$ for the directional derivative in the real field
+direction $v$. The principal coordinate has quartic scale
+$a_*=(V/g)^{1/4}$, corresponding to the site-field scale
+$h_*=a_*/\sqrt V$. With the normalized filter $T$ described after
+Theorem~\ref{thm:mixed}, the terminal estimates give
+\begin{gather}
+ \sigma_T^2\asymp_R n^s/g,\qquad
+ \sqrt V\,\|u\|_{E_n}+\|\ell\|_2\le C_R,\qquad
+ \E_{C_h}\exp(c_R n^s\|Y\|_{E_n}^2)\le C_R,\label{eq:terminaldata}\\
+ F_T(z)=\exp[-V_4(z)]+\mathcal E(z),\qquad
+ V_4(z)=\frac{g}{4}\sum_x(Tz)_x^4 .
+\end{gather}
+The weight $F_T$ is real and nonnegative. For $j=0,1,2$ its remainder
+satisfies the Gaussian envelope
+\begin{equation}
+ \E_{C_h}\left|D_{v_1}\cdots D_{v_j}\mathcal E(a_* y u+Y)\right|
+ \le C_R\epsilon_n e^{-c_R y^2}
+              \prod_{i=1}^j\frac{\|v_i\|_{E_n}}{h_*},
+ \qquad \epsilon_n\to0.
+ \label{eq:envelope}
+\end{equation}
+Appendix~\ref{app:terminal-inputs} specifies the matched-trajectory
+estimates that give \eqref{eq:terminaldata}--\eqref{eq:envelope} in
+each dimension. The same estimate for $e^{-V_4}$ holds with $\epsilon_n$ replaced by
+one. In the proof of Proposition~7.4 of \cite{base}, the $L^2$
+regulator gives the Gaussian decay in $y$ because
+$\ell^{\mathsf T}(a_*yu+Y)=a_*y$. The remaining regulator is
+integrable by \eqref{eq:terminaldata}. For the pure quartic, the
+bounded $\ell^4$ inverse of $T$ gives $V_4(z)\ge c g\|z\|_2^4/V$.
+Its field derivatives give polynomials which are absorbed by a
+fraction of the quartic. These envelopes also permit any fixed
+polynomial weight in $y$ under integration.
+
+The coefficient of the enhanced susceptibility comes from the second
+moment of the scalar quartic density. Its fourth moment appears when
+the source differentiates the quartic and determines the correction
+from $F$ to $j_F$ in the mixed covariance.
+
+\begin{lemma}[Scalar moments and the differentiated quartic]\label{lem:quartic}
+Write $m_{2,n}=Z^{-1}\E_{C_T}[a^2F_T(\psi_T)]$ for the second moment of the interacting principal coordinate. Define
+\begin{equation}
+ q_n=V\sum_x(Tu)_x^4,\qquad
+ d_n=\frac{V}{q_n}T^{\mathsf T}[(Tu)^3],
+\end{equation}
+where the cube in brackets is pointwise. Then
+\begin{align}
+ q_n&\longrightarrow p^2 I_4,&
+ m_{2,n}&=\frac{n^s}{\sqrt g}\,
+       \frac{2\Gamma(3/4)}{\Gamma(1/4)\sqrt{q_n}}(1+o(1)),
+ \label{eq:gamma}\\
+ \ip{u}{d_n}&=1,& U_n d_n&\longrightarrow
+              \frac{w^3}{\sqrt p\,I_4}\quad\text{in }L^2 .
+ \label{eq:cubic}
+\end{align}
+For real directions $v$ with $\|v\|_{E_n}=O(1)$,
+\begin{equation}
+ Z^{-1}\E_{C_T}[aD_v F_T]=-\ip{d_n}{v}+o(n^s),\qquad
+ Z^{-1}\E_{C_T}|D_v^2 F_T|=O_R(\sqrt g\,n^s).
+ \label{eq:direction}
+\end{equation}
+The errors are uniform on bounded sets in the indicated norm.
+\end{lemma}
+
+\begin{proof}
+The full covariance in the natural field is $\Sigma=tG+\varepsilon a_RA$.
+Because $A\ell=\eta_1 B\ell$ and $G\ell=(\ell^{\mathsf T}G\ell)u_*$,
+its full regression profile is exactly $u_*=B\ell$. Subtracting the
+preterminal column and its variance gives
+\begin{equation}
+ u-u_*=
+   \frac{(\ell^{\mathsf T}C_<\ell)u_*-C_<\ell}{\sigma_T^2},
+ \qquad \|u-u_*\|_2=O_R(g)
+\end{equation}
+by Lemma~\ref{lem:sources} and \eqref{eq:terminaldata}. Hence
+$U_nu\to\sqrt p\,w$ in $L^2$ by Lemma~\ref{lem:spectrum}.
+The uniform bound on $U_nu$ also gives $w\in L^\infty$.
+At fixed $R$ the normalized filter has bounded absolute row and column
+sums and microscopic range, with row sum one away from its boundary
+collar. The bulk filter is symmetric, and the same properties hold
+for its transpose. In $d\le3$ the filter is the normalized finite
+Neumann sum in the proof of \cite[Proposition~7.2]{base}. In $d=4$
+it is the normalized short-walk filter of \cite[Lemma~7.10]{base}.
+On samples of a smooth compactly supported function
+these filters converge strongly to the identity by translation
+continuity or the first moment bound. Density and uniform operator
+bounds give the same assertion on any strongly convergent embedded
+sequence, including along the allowed counterterms. Thus
+$U_nTu\to\sqrt p\,w$ strongly in $L^2$ and is uniformly bounded
+in $L^\infty$. Taking the fourth power in $L^1$ and the cube in
+$L^2$, then applying $T^{\mathsf T}$ to the latter, gives the limits
+of $q_n$ and $U_nd_n$. The identity $u^{\mathsf T}d_n=1$ follows
+by contraction.
+
+Write $a=a_*y$. On bounded $y$-sets,
+$g^{1/4}\|T(a_*yu)\|_4=q_n^{1/4}|y|$, whereas
+$g^{1/4}\|TY\|_4=O_{L^j}(g^{1/4})$ for every fixed $j$
+by \eqref{eq:terminaldata} and $\|TY\|_4\le C V^{1/4}\|Y\|_\infty$.
+Consequently $V_4(a_*yu+Y)-q_n y^4/4\to0$ in $L^1$, uniformly
+on these sets. The scalar Gaussian factor
+$\exp[-a_*^2y^2/(2\sigma_T^2)]$ tends to one there.
+Equation~\eqref{eq:envelope} controls the tails in the integrals
+with weights $1,y^2,y^4$. In particular $Z\asymp_R a_*/\sigma_T$.
+After dividing by $Z$, the second and fourth moments of $y$ equal
+those under the density proportional to $\exp(-q_n y^4/4)$, up to
+$o(1)$. The same comparison holds with $e^{-V_4}$ in the numerator.
+The second moment of this scalar quartic law is
+$2\Gamma(3/4)/(\Gamma(1/4)\sqrt{q_n})$, and its fourth moment
+is $1/q_n$. This proves \eqref{eq:gamma} and justifies moment
+convergence at the normalization used in Theorem~\ref{thm:tests}.
+
+For the first derivative of the pure quartic weight the insertion is
+$-g a\sum_x(T(au+Y))_x^3(Tv)_x$. Replacing the cube by
+$a^3(Tu)_x^3$ gives a normalized error $o(n^s)$. In detail, a term
+with $j\ge1$ factors of $TY$ costs at most
+\begin{equation}
+ C g|a|^{4-j}V\,\|Tu\|_\infty^{3-j}
+                    \|TY\|_\infty^j\|Tv\|_\infty .
+\end{equation}
+At $a=a_* y$ its Gaussian expectation, with the pure quartic
+weight, is bounded by $C_R n^s g^{j/4}(1+|y|^4)e^{-c_R y^4}$.
+Here $V_4(au+Y)\ge c_R y^4$ follows by $\ell^{\mathsf T}Y=0$ and
+the $\ell^4$ inverse bound. The factor $a_*/\sigma_T$ from
+integration cancels against $Z$. Since $ga_*^4=V$, the retained term is
+\begin{equation}
+ -\frac{V}{q_n}\sum_x(Tu)_x^3(Tv)_x\,
+       \frac{q_n}{Z}\E_{C_T}\!\left[(a/a_*)^4e^{-V_4(\psi_T)}\right]
+ =-\ip{d_n}{v}+o(n^s).
+\end{equation}
+Here the last factor tends to one by the quartic fourth moment, and
+$|\ip{d_n}{v}|=O_R(\sqrt V)$. The derivative of the remainder
+costs $O_R(\epsilon_n a_*/h_*)=o(n^s)$ by
+\eqref{eq:envelope}. Two derivatives cost
+$O_R(h_*^{-2})=O_R(\sqrt g\,n^s)$ by the same envelope for
+$F_T$. This proves \eqref{eq:direction}.
+\end{proof}
+
+\subsection{Reconstruction of the spin covariance}
+
+\begin{proof}[Proof of the covariance formulas in Theorems~\ref{thm:tests} and \ref{thm:mixed}]
+Set $f=f_n(F)$ and $b=u^{\mathsf T}f$. Exact Gaussian
+translation, first in the integrated field and then in the independent
+terminal variable $Y$, gives for $\eta\in\R$
+\begin{equation}
+ \E_{\rm full} e^{\eta f^{\mathsf T}\psi}=
+  \frac{e^{\eta^2 f^{\mathsf T}Kf/2}}{Z}
+       \E_{C_T}\!\left[e^{\eta ab}F_T(au+Y+\eta Kf)\right].
+ \label{eq:translate}
+\end{equation}
+The integrated field translates the interaction by $\eta C_<f$ and the
+terminal residual translates it by $\eta C_h f$. Gaussian translation
+holds on the support of $Y$ even when $C_h$ is singular. For fixed $n$
+and $\eta$ near zero, a fraction of the Gaussian decay in the terminal
+bounds absorbs the translation and the linear source. This gives an
+integrable bound for the first two derivatives at zero.
+
+Lemma~\ref{lem:sources} gives $\|Kf\|_{E_n}=O(1)$, so
+\eqref{eq:direction} applies with $v=Kf$. Two derivatives of
+\eqref{eq:translate} produce $f^{\mathsf T}Kf$, $m_{2,n} b^2$,
+$2b Z^{-1}\E_{C_T}[aD_{Kf}F_T]$, and $Z^{-1}\E_{C_T}[D_{Kf}^2 F_T]$.
+Completing the square in $K$ yields
+\begin{equation}
+ \E_{\rm full}(f^{\mathsf T}\psi)^2
+ =L_n b^2+(f-bd_n)^{\mathsf T}K(f-bd_n)+o(n^s),
+ \qquad L_n=m_{2,n}-d_n^{\mathsf T}K d_n .
+ \label{eq:square}
+\end{equation}
+In fact the cross term from \eqref{eq:translate} is
+$2bZ^{-1}\E_{C_T}[aD_{Kf}F_T]=-2b\,d_n^{\mathsf T}Kf+o(n^s)$.
+The bounded $\ell^2$ norm of $d_n$ gives $L_n=m_{2,n}+O_R(n^s)$.
+Applying \eqref{eq:square} to $f+h$ and $f-h$ and taking one quarter
+of the difference gives the mixed moment for $f=f_n(F)$ and $h=f_n(H)$.
+
+Put $f'=f-bd_n$, so that $u^{\mathsf T}f'=0$ exactly. We can
+evaluate $K$ on this test without differentiating in the direction
+$Kd_n$. Indeed $K=\Sigma-\sigma_T^2 uu^{\mathsf T}$, and
+$u_*^{\mathsf T} f'=O_{R,F}(g)$ by the profile comparison in
+Lemma~\ref{lem:quartic}. The full Gaussian variance in the principal
+direction is $O_R(n^s/g)$. Since $A\ell=\eta_1u_*$, removing that
+summand from $\Sigma$ leaves exactly
+\begin{equation}
+ tG_h+\varepsilon a_R(A-\eta_1 u_*u_*^{\mathsf T}).
+\end{equation}
+The second term is bounded in operator norm. The omitted full
+principal term tested on $f'$ costs $O_R(n^s g)$. The same estimates
+apply to bilinear tests. Equations~\eqref{eq:cubic} and
+Lemma~\ref{lem:spectrum} now give, with $h'=f_n(H)-
+(u^{\mathsf T}f_n(H))d_n$,
+\begin{equation}
+ U_n f'\to j_F,\qquad
+ n^{-s}(f')^{\mathsf T}K h'
+ =\frac{t a_Rp^2}{\zeta\kappa_R}\,\mathcal B(F,H)+o(1).
+ \label{eq:reduced-limit}
+\end{equation}
+The $o(1)$ holds for the actual bounded sequence $t=t_n$.
+
+For the scalar term in \eqref{eq:square}, smooth sampling and the
+ground-state estimate give
+\begin{equation}
+ u^{\mathsf T}f_n(F)=\sqrt p\, b_F+
+                 O_{R,F}(g+n^{-s/16}).
+\end{equation}
+Multiplying this error by $L_n=O_R(n^s/\sqrt g)$ still costs
+$o(n^s)$. Combining \eqref{eq:square}, \eqref{eq:reduced-limit}, and
+Lemma~\ref{lem:sources} therefore gives the single bilinear formula
+\begin{equation}
+ \Cspin(F,H)=\frac{p L_n}{\beta a_R m^2}\,
+        b_F b_H+n^s A_n^{\rm G}\mathcal B(F,H)+o(n^s).
+ \label{eq:master}
+\end{equation}
+Using \eqref{eq:gamma} and $q_n\to p^2 I_4$ gives \eqref{eq:ng-susceptibility}.
+When $b_F=0$ the remaining form has $j_F=F$ and gives
+\eqref{eq:g-susceptibility}. Taking $F=H=e_g$ in \eqref{eq:master} and eliminating
+its scalar coefficient gives \eqref{eq:mixed}.
+\end{proof}
+
+\subsection{Exponential moments of the spin field}
+
+\begin{proof}[Proof of the exponential-moment assertions of Theorem~\ref{thm:tests}]
+Set $f=f_n(F)$ and $b=u^{\mathsf T}f$. Fix $D>0$ and take
+$\theta\in[-D,D]$. Write $\rho_n=g^{1/4}n^{-s/2}$ if $b_F\ne0$
+and $\rho_n=n^{-s/2}$ if $b_F=0$. To compute
+$\E_{\rm sp}e^{\theta\rho_n X}$, use
+\eqref{eq:spin-laplace-transfer} and \eqref{eq:translate}.
+The two factors are the Gaussian exponential
+$\exp(\eta_n^2 f^{\mathsf T}Kf/2)$ and the translated terminal
+integral, with
+\begin{equation}
+ \eta_n=\theta c_{\rm sp}\rho_n,\qquad v=\eta_n Kf,\qquad
+ \xi_n=\eta_n a_* b .
+\end{equation}
+Lemma~\ref{lem:sources} gives $\|v\|_{E_n}/h_*=O(g^{1/4})$ at both
+scales. The profile comparison gives
+$b=\sqrt p\,b_F+O(g+n^{-s/16})$. Thus $\xi_n$ stays bounded if
+$b_F\ne0$. If $b_F=0$, then
+$\xi_n=O_D(g^{-1/4}(g+n^{-s/16}))=o(1)$.
+
+We first evaluate the terminal integral with $a=a_*y$. Set
+$\delta_n=\|v\|_{E_n}/h_*$. For $\phi=a_*yu+Y+v$, the identities
+$\ell^{\mathsf T}Y=0$ and $\ell^{\mathsf T}u=1$ imply
+$\|\phi\|_2/a_*\ge c(|y|-C\delta_n)_+$. The pointwise remainder
+bound used in Appendix~\ref{app:terminal-inputs} therefore gives
+\begin{equation}
+ \E_{C_h}|\mathcal E(a_*yu+Y+v)|\le C\epsilon_n e^{-c y^2},
+ \qquad
+ e^{-V_4(a_*yu+Y+v)}\le \exp[-c(|y|-C\delta_n)_+^4].
+ \label{eq:translated-envelope}
+\end{equation}
+Indeed the positive exponent in the remainder regulator is bounded by
+$C c_h(y^2+h_*^{-2}\|Y\|_{E_n}^2+\delta_n^2)$, where $c_h$ is the
+regulator constant of \cite[Assumption~7.1]{base}. Its $y^2$ term is
+absorbed by the negative quadratic exponent, as in the proof of
+\eqref{eq:envelope}, and \eqref{eq:terminaldata} controls the
+expectation of the remaining factor. The quartic bound follows from
+$V_4(\phi)\ge c g\|\phi\|_2^4/V$.
+
+On bounded $y$-intervals, $g^{1/4}\|Tv\|_4\le C\delta_n$ and
+$g^{1/4}\|TY\|_4=O_{L^4}(g^{1/4})$. Hence
+$V_4(a_*yu+Y+v)=q_n y^4/4+o_{L^1}(1)$ there, uniformly on each
+such interval. The scalar Gaussian factor tends to one there as well.
+Since $|\xi_n|$ is bounded, the bounds in
+\eqref{eq:translated-envelope} remain integrable after multiplication
+by $e^{\xi_n y}$. Dividing by the unshifted integral for $Z$ cancels
+the Gaussian normalization $a_*/(\sqrt{2\pi}\sigma_T)$ and gives
+\begin{equation}
+ \frac{\E_{C_T}\!\left[e^{\eta_n a b}F_T(au+Y+v)\right]}{Z}
+ =\frac{\int_{\R}e^{\xi_n y-q_n y^4/4}\,dy}
+        {\int_{\R}e^{-q_n y^4/4}\,dy}+o(1)
+ =\Phi_4(\xi_n q_n^{-1/4})+o(1).
+ \label{eq:terminal-laplace}
+\end{equation}
+The denominators are bounded away from zero after cancellation since
+$q_n\to p^2 I_4>0$. All tail and compact-interval estimates are
+uniform for $|\theta|\le D$.
+
+If $b_F\ne0$, then $\eta_n^2 f^{\mathsf T}Kf=O(\sqrt g)$.
+Also $\xi_n=\theta c_{\rm sp} b$, so that
+$\xi_n q_n^{-1/4}=\theta b_F\sqrt{A_n^{\rm NG}/v_4}+o(1)$ by
+\eqref{eq:amplitudes}. This proves \eqref{eq:ng-laplace}.
+If $b_F=0$, the terminal factor in \eqref{eq:terminal-laplace}
+tends to one. Since $b=o(1)$ and $\|d_n\|_2=O(1)$, replacing $f$
+by $f-bd_n$ in $n^{-s}f^{\mathsf T}Kf$ costs $o(1)$ by
+Lemma~\ref{lem:sources}. Now $j_F=F$, and \eqref{eq:reduced-limit}
+gives $\eta_n^2 f^{\mathsf T}Kf
+=\theta^2 A_n^{\rm G}\ip{F}{\Ga F}+o(1)$. This proves \eqref{eq:g-laplace}.
+Finally, for $F\ne0$ the susceptibility formulas give
+$\rho_n^2\chi_n(F)\asymp_{R,F}1$, since $\Ga$ is strictly positive
+on $w^\perp$ and both amplitudes are bounded above and away from zero.
+For fixed $t\in\R$ take $\theta=t/(\rho_n\sqrt{\chi_n(F)})$.
+This choice stays in a bounded interval, and the two formulas give
+the Laplace transforms of the variance-one laws in
+\eqref{eq:standardized-laws}.
+\end{proof}
+
+\section{Spin amplitudes}
+In the microscopic split of \cite[Section~2]{base}, $A_\infty$ is the
+positive convolution kernel used for the Gaussian field and $Q_\infty$
+is the remaining finite-range spin interaction. Write $A,Q$ for their
+restrictions to $\Lambda_n$, and put $B=I-Q$, retaining the diagonal
+of $Q$ as in the Gaussian reference. The temperature and source
+normalizations are
+\begin{equation}
+ B-A=\zeta J_n,\qquad \beta=\tau/\zeta,\qquad
+ p=\sum_z A_\infty(z)=1-\sum_z Q_\infty(z)>0 .
+\end{equation}
+Here $\zeta=(1+e^{-R})^{-1}$ for $d\le3$, and $\zeta=(1+t_R)^{-1}$
+for the local split with diagonal correction $t_R$ in
+\cite[Lemma~2.1]{base}. Denote the microscopic field exponent $a_*$
+of \cite[Section~2]{base} by $\gamma_{\rm sc}\in(1/12,1/10)$.
+Then $\lambda=R^{-2d\gamma_{\rm sc}}$
+and $a_R=\lambda R^s$. The physical Hubbard--Stratonovich field in
+the original split equals the canonical field divided by $\sqrt{a_R}$.
+
+Following Section~7.5 of \cite{base}, we write $c'=c'_n$ for the
+original reference parameter called $c$ in its Section~2. It lies below
+the pole $c_{*,n}=\lambda_{\max}(B^{-1/2}AB^{-1/2})^{-1}$. In $d\le3$ set
+$\varepsilon=0$. In $d=4$, let $\varepsilon=\varepsilon_n$ be the
+parameter of the change of field selected together with $\tau$ in
+\cite[Corollary~7.13]{base}. Put $t=1-\varepsilon$ and
+$m=p(1-\varepsilon c')$. The coefficient $g$ is normalized so that
+the terminal quartic is $(g/4)\sum_x(Tz)_x^4$, where the linear
+filter $T$ has bulk row sum one. In $d\le3$, $g=g_N$ is the terminal
+coupling of Proposition~7.14 of \cite{base}. In $d=4$ the prescribed
+coordinate $a_0$ at cut $J$ fixes the temperature through its
+marginal density \cite[Eq.~(7.43)]{base}. The proof of Corollary~7.13
+then evaluates moments in the transformed field at the earlier cut
+$k=J-1$. We use $g=g_k$ there. The
+parameters $t,m,\beta$ are bounded above and away from zero at fixed
+$R$. The amplitudes are
+\begin{align}
+ \sigma_R^2&=\sum_z z_1^2D_R(z),&
+ \kappa_R&=(\sigma_R^2/2)^\alpha,\\
+ A_n^{\rm NG}&=\frac{2\Gamma(3/4)}
+ {\Gamma(1/4)\,\sqrt{I_4}\,\beta a_R m^2},&
+ A_n^{\rm G}&=\frac{t}{\tau\,\kappa_R(1-\varepsilon c')^2}.
+ \label{eq:amplitudes}
+\end{align}
+These are the amplitudes for the original $\pm1$ spins. For example,
+in $d\le3$ the Gaussian amplitude is $1/(\tau\kappa_R)$. All statements
+allow the matched parameters to depend on $n$. A fixed numerical
+coefficient multiplying $n^s\sqrt{\log V}$ would require convergence
+of $A_n^{\rm NG}/\sqrt{g\log V}$, and a fixed Gaussian amplitude
+would require convergence of $A_n^{\rm G}$.
+
+\appendix
+\section{Spectral estimates on the cube}\label{app:spectral}
+\subsection{Convergence of the principal profile and the reduced resolvent}
+
+\begin{proof}[Proof of Lemma~\ref{lem:spectrum}]
+The domain of \eqref{eq:form} embeds compactly in \(L^2(\Omega)\) by
+the translation criterion. For \(s<2\) the jump form has a
+strictly positive kernel between distinct points. Hence each real
+minimizer has one sign, since taking its absolute value strictly
+decreases the energy if both signs occur on sets of positive measure.
+Two nonzero orthogonal nonnegative minimizers would have disjoint
+supports and their difference would be a sign-changing minimizer.
+This proves simplicity. For \(s=2\) simplicity follows from the
+Dirichlet sine expansion.
+
+Put \(b=1/n\) and
+\(D_n(v)=b^{-s}\langle v,J_n v\rangle/\kappa_R\).
+In rescaled Fourier variables its zero-extension multiplier is
+\(j_b(\xi)=b^{-s}(1-\widehat D_R(b\xi))^\alpha/\kappa_R\),
+where the walk multiplier is its characteristic function. On the
+Brillouin zone it is comparable at fixed \(R\) to \(|\xi|^s\)
+since the support is aperiodic and the origin is a nondegenerate quadratic
+minimum of \(1-\widehat D_R\). For all \(\xi\),
+\(j_b(\xi)\le |\xi|^s\) by \(1-\cos t\le t^2/2\) and cube symmetry.
+On \(|\xi|\le b^{-1/2}\), Taylor expansion gives
+\(j_b(\xi)=|\xi|^s(1+O_R(b))\).
+
+For \(\|v\|_2+D_n(v)\le C\), lattice translations of its zero
+extension obey
+\(\|v(\cdot+m)-v\|_2\le C_R|bm|^{s/2}\). This follows from
+\(|e^{it}-1|^2\le C|t|^s\) and the multiplier lower bound.
+For a translation of the embedded step function the squared norm is
+a convex combination of the squared norms for the adjacent lattice
+translations, by subdividing each cell. Consequently
+\begin{equation}
+ \|U_n v(\cdot+y)-U_n v\|_2\le C_R(|y|+b)^{s/2},\qquad
+ \|(B-pI)v\|_2=O_R(b^{s/2}).
+\end{equation}
+The second bound uses the finite-range convolution representing
+\(Q=I-B\), with bulk row sum \(1-p\), before restriction.
+
+We give the spectral comparison including multiplicities. If \(z\)
+belongs to the continuum form domain, the difference-energy
+representation of \(J_n\) gives
+\begin{equation}
+ D_n(U_n^*z)\le\int_{\mathbb R^d}j_b(\xi)|\widehat z(\xi)|^2\,d\xi
+ \le \mathcal D(z).
+\end{equation}
+Indeed on the full cell grid averaging commutes with each lattice
+translation and is contractive, and all jump weights are nonnegative.
+The cell averages outside the cube are zero. Also
+\(\|U_nU_n^*z-z\|_2\le C b^{s/2}\mathcal D(z)^{1/2}\), by averaging
+the squared translation bound over pairs of points in each cell.
+Conversely, any unit sequence of bounded \(D_n\) has an embedded
+strongly convergent subsequence by the translation estimate and
+bounded support. Its limit \(z\) satisfies
+\(\mathcal D(z)\le\liminf D_n(v)\). Indeed on each fixed Fourier
+ball the transform of \(U_n v\) equals the normalized lattice
+transform times the cell multiplier, a phase times a product of
+sinc functions of modulus at most one. Integrate on this ball,
+use local convergence of \(j_b\), and increase the radius.
+
+Write \(\lambda_{j,n}\) for the levels of the Rayleigh quotient
+\(pD_n(v)/\langle v,Bv\rangle\). The sampled first \(j\) continuum
+levels give \(\lambda_{j,n}\le\mu_j+O_{R,j}(b^{s/2})\). For the
+lower bound take a subsequence realizing the lower limit and extract
+strong limits of the first \(j\) vectors normalized in the
+\(B\)-inner product. Their multiples by \(\sqrt p\) tend to an
+orthonormal family. Applying the form lower bound to every linear
+combination and then applying continuum min--max gives
+\(\liminf\lambda_{j,n}\ge\mu_j\). The limits are eigenvectors at
+their respective levels. Indeed the $i$th limit has energy at most
+\(\mu_i\) and is orthogonal to the previously obtained eigenvectors,
+so it attains the minimum on that complement. This argument allows
+arbitrary choices within repeated eigenspaces.
+
+We need a rate only for the first vector. Put \(v=\ell/\|\ell\|_2\)
+and \(V_n=U_n v\). The upper comparison and the denominator estimate
+give \(D_n(v)\le\mu_1+O_R(b^{s/2})\). Let \(r=b^{1/4}\) and
+smooth \(V_n\) by a nonnegative smooth probability density of
+support radius \(r\), obtained by rescaling a fixed density.
+The result \(z\) is supported in the closure of \(\Omega_r=(-r,1+r)^d\) and
+\(\|z-V_n\|_2=O_R(r^{s/2})\). On \(|\xi|\le b^{-1/2}\) the
+cell multiplier and the Fourier multiplier of this convolution
+each have modulus at most one. Thus this part of \(\mathcal D(z)\)
+is at most \((1+O_R(b))D_n(v)\). On the complement, rapid
+decay of the smooth multiplier gives \(O(b^2)\) using
+\(\|V_n\|_2=1\). The ground level and spectral gap on \(\Omega_r\)
+are \((1+2r)^{-s}\) times their values on \(\Omega\).
+The Rayleigh excess of \(z/\|z\|_2\) above this ground level is
+therefore \(O_R(r^{s/2}+r+b)\). As \(z\ge0\), the gap implies
+that its distance to the normalized, dilated ground state \(w_r\)
+is \(O_R((r^{s/2}+r+b)^{1/2})\). To bound
+\(\|w_r-w\|_2\), smooth the compactly supported \(w\)
+at radius \(r\) with error \(O(r^{s/2})\), and compare the dilates
+of the smooth function by integrating their derivatives in the
+dilation parameter. The cost is
+\(O(r)(1+\|\nabla(w*\rho_r)\|_2)=O(r^{s/2})\) by the Fourier
+form bound and bounded support. We obtain
+\(\|V_n-w\|_2=O_R(b^{s/16})\). Normalization gives
+\(\|\ell\|_2=p^{-1/2}+O_R(b^{s/2})\), and the estimate for
+\((B-pI)\ell\) proves the profile assertion.
+
+For the reduced covariance, put
+\(e_n=\zeta\kappa_R/(pn^s)\) and \(r_n=(1-1/c')/e_n\).
+The eigenvalues of \(E=B^{-1/2}AB^{-1/2}\) are
+\(\eta_{j,n}=1-e_n\lambda_{j,n}>0\).
+The pole displacement prescribed in \cite[Section~2]{base} is
+\(c_{*,n}-c'=\theta_0\lambda^2\bar g_N(R/n)^s\), with fixed
+\(\theta_0>0\) and \(\bar g_N=O_R((\log n)^{-1})\).
+Hence \(r_n=\lambda_{1,n}+o_R(1)\). If \(\ell_{j,n}\) are the
+\(B\)-orthonormal generalized eigenvectors, the spectral decomposition
+of \(G=a_R B^{1/2}(E^{-1}-c'I)^{-1}B^{1/2}\) gives
+\begin{equation}
+ n^{-s}G_h=\frac{a_Rp}{\zeta\kappa_R}
+ \sum_{j\ge2}\frac{\eta_{j,n}}{c'(\lambda_{j,n}-r_n)}
+       (B\ell_{j,n})(B\ell_{j,n})^{\mathsf T}.
+\end{equation}
+The operator norm of the tail from level \(m\) is bounded by
+\(C_R/(\lambda_{m,n}-r_n)\), since \(B^{1/2}\ell_{j,n}\) are
+orthonormal and \(B\) is uniformly bounded. Its upper limit tends
+to zero as \(m\to\infty\). In each fixed group of complete
+eigenspaces the embedded columns tend subsequentially to
+\(\sqrt p\) times an orthonormal continuum eigenbasis by the
+min--max comparison and the denominator estimate. The resulting
+spectral projections are independent of the chosen basis. Pairing
+with the strongly convergent tests and then removing the truncation
+gives the stated limit.
+\end{proof}
+
+\subsection{Sine coefficients of the fractional ground state}\label{app:sine-support}
+
+\noindent We prove that $w$ has infinitely many nonzero sine
+coefficients for $0<\alpha<1$. Suppose that $w$ is a finite sine sum.
+Write $T_t$ for the whole-space heat semigroup applied to its zero
+extension and restricted to $\Omega$, and $T^D_t$ for killed heat
+flow in $\Omega$. The maximum principle gives $T_t w\ge T^D_t w$
+for $w\ge0$. The scalar identity
+$x^\alpha=c_\alpha\int_0^\infty(1-e^{-tx})t^{-1-\alpha}\,dt$
+gives in the interior
+\begin{equation}
+ (-\Delta_D)^\alpha w-H_\alpha w
+   =c_\alpha\int_0^\infty (T_t w-T^D_t w)t^{-1-\alpha}\,dt .
+\end{equation}
+One can first test this identity against nonnegative smooth functions
+of compact support. The integral over $1\le t\le2$ is bounded below
+near the centre of a face by a positive constant. Indeed $T_t w$
+there has a positive lower bound by its Gaussian kernel, while the
+finite sine sum $T_t^D w$ vanishes uniformly at the face.
+On the left both the finite sine sum $(-\Delta_D)^\alpha w$ and
+$H_\alpha w=\mu_1 w$ vanish there. This contradiction rules out a
+finite sine expansion.
+
+\section{Gaussian source bounds and terminal estimates}\label{app:slices}
+\subsection{Covariance bounds for a smooth source}
+
+To prove the norm bounds in Lemma~\ref{lem:sources}, let $b$ be the
+length scale of a covariance slice and put
+\begin{equation}
+ \rho_b(x)=\min\{b,R+\operatorname{dist}(x,\Lambda_n^c)\},\qquad
+ \|v\|_{b,\omega}=\max_{|\nu|\le q}\sup_{x\in\Lambda_n}
+   (b/\rho_b(x))^\omega\rho_b(x)^{|\nu|}|\nabla^\nu v(x)|.
+\end{equation}
+Here $\nabla^\nu$ is a lattice difference of multi-order $\nu$ on a
+stencil inside the box, and $q$ is the fixed derivative order in the
+terminal field norm. Use the weight $\omega$ of the matched trajectory,
+with $\max\{0,(s-1)/2\}<\omega<\alpha$ and $\omega\ne1/2$.
+In dimension one this weight is $\omega=1/8$
+\cite[Proposition~7.14]{base}. In every dimension the terminal norm
+$E_n$ is the raw norm $F_{n,\omega}$ of \cite[Section~7.1]{base},
+denoted here by $\|\cdot\|_{n,\omega}$. Its order-zero term controls
+the supremum norm. Fix $\omega'$ with $\omega<\omega'<\alpha$.
+
+Corollary~2.13 of \cite{base} treats the integrated uniform source.
+For a signed smooth source we use its two covariance-leg estimates
+and keep the differences of the test function in the interior.
+First use the original split, with integrated covariance $C_<^0$.
+A slice $C_j$ of range $O(b)$ has $O(b^d)$ sites per row. Applying
+Cauchy--Schwarz to the two covariance legs, each of size
+$O_R(b^{-s/2})$ at order zero, bounds the absolute row sum by
+$C_R b^s$. With $k$ differences on the first leg, the slice comparison
+and the weighted stencil estimates of
+\cite[Lemma~2.8, Proposition~2.9 and Lemmas~2.10--2.11]{base}
+give, for $f=f_n(F)$ with $\|f\|_\infty\le C_F n^{-s}$,
+\begin{equation}
+ |\nabla^k(C_j f)(x)|\le C_{R,F} n^{-s} b^s
+       \rho_b(x)^{-k}(\rho_b(x)/b)^{\omega'},\qquad 0\le k\le q .
+\end{equation}
+Within distance $O(b)$ of a face, $\rho_n\lesssim\rho_b$. Multiplying
+by the scale-$n$ stencil weight bounds the last display by
+$C_{R,F}n^{-s+\omega}b^{s-\omega}$. In the interior the covariance
+row agrees with its bulk convolution, so the differences act on $f$.
+There $\|\nabla^k f\|_\infty\le C_F n^{-s-k}$ on the support of
+the row and $b\lesssim\rho_n\le n$, giving the same bound. The
+finitely many merged microscopic slices cost an $R$-dependent
+constant. Summing geometrically, using $\omega<s$ and $b\lesssim n$,
+gives $\|C_<^0 f\|_{E_n}=O_{R,F}(1)$. Summing the row bounds gives
+$\|C_<^0\|_{2\to2}=O_R(n^s)$ by symmetry.
+
+In dimension four use the unperturbed covariances $C_<^0,C_T^0$ at
+cut $k$. The transfer identity gives
+\begin{equation}
+ C_<=tC_<^0+(1-t)a_R A+t\eta M,\qquad
+ C_T=t(C_T^0-\eta M)
+\end{equation}
+by \cite[Lemma~5.4, Eq.~(5.19)]{base}, applied at this cut in
+the proof of Corollary~7.13. Here
+$\eta$ is bounded, $0\le M\le a_R A$, and $M\le C_R C_T^0$ for the
+original terminal covariance $C_T^0$ at this cut. Both extra terms
+have bounded operator norm. The finite-range kernel $A$ acts on $f$
+by bulk convolution outside a microscopic collar. Inside it the
+weighted differences cost $O_{R,F}(n^{\omega-s})$.
+For any weighted stencil $D$ in $\|\cdot\|_{n,\omega}$, the
+conditioned-field and profile bounds at the earlier cut in \cite[proof of Corollary~7.13]{base} give
+\begin{equation}
+ D C_T^0 D^{\mathsf T}\le C_R(n^{-2}+\sigma_0^2 n^{-4}),\qquad
+ \sigma_0^2=\ell^{\mathsf T}C_T^0\ell=O_R(n^2\log n)
+ .
+\end{equation}
+Thus $|DMf|\le(DMD^{\mathsf T})^{1/2}(f^{\mathsf T}Mf)^{1/2}
+\le C_{R,F}(n^{-1}+\sigma_0n^{-2})$. This proves both estimates for
+$C_<$ under the transfer.
+
+Finally \eqref{eq:terminaldata} gives
+$\E_{C_h}\|Y\|_{E_n}^2=O_R(n^{-s})$, hence
+$\|C_h\|_{2\to2}\le\E_{C_h}\|Y\|_2^2=O_R(Vn^{-s})=O_R(n^s)$.
+In $C_h f=\E_{C_h}[Y\ip{Y}{f}]$, Cauchy--Schwarz gives
+$\|C_h f\|_{E_n}\le(\E_{C_h}\|Y\|_{E_n}^2)^{1/2}(f^{\mathsf T}C_h f)^{1/2}
+=O_{R,F}(1)$. Adding the estimates for $C_<$ gives the bounds for
+$K$ in \eqref{eq:cov-split}.
+
+\subsection{Terminal estimates at the matched point}\label{app:terminal-inputs}
+
+For $d=1,2,3$, Proposition~7.14 of \cite{base} verifies
+Assumption~7.1 there at the physical temperature used in
+Theorem~\ref{thm:tests}. It gives $g=g_N\asymp_R(\log V)^{-1}$,
+the variance, profile and conditioned Gaussian moment in
+\eqref{eq:terminaldata}, and the pointwise bound on the remainder
+and its first two derivatives in arbitrary field directions.
+In particular, the terminal packing estimate
+\cite[Proposition~7.2]{base} gives
+\begin{equation}
+ \epsilon_n\le C_R\bigl(\sqrt g+g^{-9/4}\|K_N^{\rm RG}\|\bigr)
+ \le C_R\bigl(\sqrt g+g^{3/4}+U d_0^N g^{-9/4}\bigr)=o(1).
+\end{equation}
+Here $K_N^{\rm RG}$ is the terminal polymer activity, $U=O_R(1)$
+is the initial activity bound, $0<d_0<1$ and $N\asymp\log n$.
+Integrating the pointwise bound over the conditioned field $Y$, as
+in the proof of \cite[Proposition~7.4]{base}, gives
+\eqref{eq:envelope} with the same factors $\|v_i\|_{E_n}/h_*$.
+
+For $d=4$, use the temperature and change of field in
+\cite[Corollary~7.13]{base}. Its proof uses the prescribed scalar
+density at cut $J$ to select the mass. At the earlier cut $k$, the
+terminal coefficients of the transformed field satisfy the bounds of
+\cite[Proposition~7.2]{base} at that mass, with
+$g=g_k\asymp_R(\log n)^{-1}$. Lemma~5.4 of \cite{base}, applied
+at the fixed change of aspect as in the proof of Corollary~7.13,
+gives $\sigma_T^2\asymp_R n^2/g_k$, the profile bound for $u$ and
+the exponential moment of $Y$ in \eqref{eq:terminaldata}. The
+same integration of the two-derivative bound gives \eqref{eq:envelope}
+for the field in \eqref{eq:cov-split}. Thus the moment calculation
+uses only the coefficient estimates at the selected mass.
+
+\section{Displacement of the pseudocritical point}\label{app:shift}
+
+Recall that $\tau_c=\tau_c(d,R)=\inf\{\tau>0:\langle\sigma_0\rangle_\tau^+>0\}$
+and $\Delta_n=\tau_{\Lambda_n}^{\rm pc}-\tau_c$ and $(u)_+=\max\{u,0\}$.
+
+\begin{proof}[Proof of Theorem~\ref{thm:pc-shift}]
+Let $G_{n,\tau}^{\rm F}$ be the zero-field free-box two-point matrix at
+physical inverse temperature $\tau$ and put
+$\chi_n^{\rm unif}(\tau)=V^{-1}\one^{\mathsf T}G_{n,\tau}^{\rm F}\one$.
+At the matched point $G_{n,\tau_{\Lambda_n}^{\rm pc}}^{\rm F}=G_{\rm sp}$ and
+\cite[Theorem~1.1]{base} gives
+\begin{equation}\label{eq:shift-matched}
+ \chi_n^{\rm unif}(\tau_{\Lambda_n}^{\rm pc})\asymp_{d,R}n^s\sqrt{\log n}.
+\end{equation}
+The ferromagnetic pair kernel is
+$K_R(z)=-(L_R^\alpha)(0,z)$ for $z\ne0$, with $K_R(0)=0$.
+Thus $K_R(x-y)=-(J_n)_{xy}$ at distinct sites in the box. When
+$\alpha<1$ the binomial series gives
+\begin{equation}\label{eq:shift-walk}
+ I-L_R^\alpha=\sum_{k\ge1}a_kD_R^{*k},\qquad
+ a_k=(-1)^{k+1}\binom{\alpha}{k}>0,\qquad \sum_{k\ge1}a_k=1.
+\end{equation}
+At $\alpha=1$, $K_R=D_R$. Hence $j_R=\sum_zK_R(z)$ lies in $(0,1]$.
+For $\tau j_R<1$ the Dobrushin influence sum is at most
+$\sum_z\tanh(\tau K_R(z))\le\tau j_R<1$. Uniqueness and spin-flip
+symmetry imply $\tau_c\ge j_R^{-1}\ge1$. The matching construction in
+\cite[Corollaries~6.3 and~7.13, Proposition~7.14]{base} takes place in
+$|\beta-1|\le A_dR^{-d}$, with $A_d$ fixed before $R$ and $n$.
+Since $\tau=\zeta\beta$ and $0<\zeta\le1$ in Section~1, this gives
+$\tau_{\Lambda_n}^{\rm pc}\le1+A_dR^{-d}$ and hence the stated
+$R^{-d}$ bound in all four dimensions.
+
+Set $h_x(\tau)=\sum_{y\in\Lambda_n}G_{n,\tau}^{\rm F}(x,y)$ and
+$H_n(\tau)=\max_{x\in\Lambda_n}h_x(\tau)$. The bulk input is the
+free-state estimate
+$\langle\sigma_0\sigma_z\rangle_{\tau_c}^{\rm f}
+\le C_{d,R}(1+|z|_\infty)^{-s}$ of \cite[Theorem~1]{park-bulk}.
+By Griffiths' domain monotonicity the free-box correlations at $\tau_c$
+satisfy the same bound. Summing over shells about $x$ gives
+\begin{align}
+ H_n(\tau_c)\le C_{d,R}\sum_{k=0}^{n-1}(1+k)^{d-1-s}\le A_{d,R}n^s,
+\end{align}
+since $d-s=s$. At the matched point the maximum row sum dominates its
+average, so \eqref{eq:shift-matched} gives
+$H_n(\tau_{\Lambda_n}^{\rm pc})\ge a_{d,R}n^s\sqrt{\log n}$.
+For large $n$ this exceeds $H_n(\tau_c)$. Monotonicity in $\tau$
+then gives $\tau_{\Lambda_n}^{\rm pc}>\tau_c$.
+
+For brevity write $G=G_{n,\tau}^{\rm F}$. Differentiating the spin
+expectation with respect to $\tau$ and applying Lebowitz's zero-field
+four-point inequality \cite{lebowitz} gives
+\begin{align}
+ \frac{d}{d\tau}G(x,y)
+ =\sum_{\{u,v\}\subset\Lambda_n} K_R(u-v)
+      \operatorname{Cov}_{n,\tau}^{\rm F}(\sigma_x\sigma_y,\sigma_u\sigma_v)
+ \le \sum_{u,v\in\Lambda_n} G(x,u)K_R(u-v)G(v,y).
+\end{align}
+The two cross-pairings turn the unordered bond sum into the ordered
+sum on the right. Summing over $y$ yields
+$h_x'(\tau)\le j_R h_x(\tau)H_n(\tau)$. The maximum of these finitely
+many smooth row sums is locally Lipschitz and satisfies
+$H_n'\le j_R H_n^2$ almost everywhere. Integrating the differential
+inequality for $1/H_n$ gives
+\begin{align}
+ \Delta_n\ge \frac1{j_R}
+ \left(\frac1{H_n(\tau_c)}-\frac1{H_n(\tau_{\Lambda_n}^{\rm pc})}\right)
+ \ge \frac{n^{-s}}{j_R}
+ \left(\frac1{A_{d,R}}-\frac1{a_{d,R}\sqrt{\log n}}\right).
+\end{align}
+The last parenthesis is bounded below by a positive constant for
+sufficiently large $n$.
+
+For \eqref{eq:pc-shift-upper} take $d<4$. If $\Delta_n\le0$ the bound
+is immediate. Otherwise set $\tau=\tau_{\Lambda_n}^{\rm pc}$,
+$\theta=(\tau_c+\tau)/2$, and let $D_r$ be the uniform kernel of
+Section~1 with integer spread $1\le r\le n$.
+Two estimates on $K_R$ will be useful. For a nonnegative symmetric
+coupling $H$ with zero diagonal, denote its missing bond weight per site by
+$e_n(H)=V^{-1}\sum_{x\in\Lambda_n,\,y\notin\Lambda_n}H(x-y)$.
+At fixed $R$,
+\begin{align}
+ \min_{0<|z|_\infty\le r}K_R(z)\ge c_{d,R}r^{-d-s},
+ \qquad e_n(K_R)\le C_{d,R}
+ \begin{cases}
+ n^{-s},&s<1,\\
+ n^{-1}\log(2n),&s=1,\\
+ n^{-1},&s>1 .
+ \end{cases}
+\end{align}
+For the first estimate, $a_k\asymp_d k^{-1-s/2}$ in \eqref{eq:shift-walk},
+and the local central limit theorem for the aperiodic spread-out walk
+gives $D_R^{*k}(z)\ge c_{d,R}k^{-d/2}$ for $r^2\le k\le2r^2$ and
+$|z|_\infty\le r$ and large $r$. Positivity in \eqref{eq:shift-walk}
+covers the finitely many smaller $r$. For the second estimate, a displacement $z$ leaves
+the cube from at most a fraction $\min\{1,d|z|_\infty/n\}$ of its sites.
+The walk after $k$ steps has expected norm at most $C_{d,R}\sqrt{k}$.
+Splitting $\sum_{k\ge1}a_k\min\{1,C_{d,R}\sqrt{k}/n\}$ at $k=n^2$
+gives the three bounds on $e_n(K_R)$.
+
+Choose $\delta=c_{d,R}(\tau-\theta)r^{-s}$ with the constant small
+enough that $H_0=\theta K_R$ and $H_1=H_0+\delta D_r$ satisfy
+$H_0\le H_1\le\tau K_R$ entrywise. Let $P_n(H)$ and $P_\infty(H)$
+be the free-box and bulk log partition functions per site with pair
+coupling $H$. Tiling a large cube by $n$-boxes gives
+$0\le P_\infty(H)-P_n(H)\le e_n(H)/2$, since adding the bonds between
+tiles increases the pressure by at most their total weight per site.
+Interpolation between $H_0$ and $H_1$, Griffiths monotonicity and
+$\|D_r\|_\infty\le C_dr^{-d}$ give
+\begin{align}
+ P_n(H_1)-P_n(H_0)
+ \le \frac{\delta}{2V}\sum_{x,y\in\Lambda_n}
+                D_r(x-y)G_{n,\tau}^{\rm F}(x,y)
+ \le C_d\delta r^{-d}\chi_n^{\rm unif}(\tau).
+\end{align}
+Write $m_+(\theta)=\langle\sigma_0\rangle_\theta^+$. In the bulk,
+$P_\infty(H_1)-P_\infty(H_0)\ge\delta m_+(\theta)^2/2$.
+Indeed, keep $n,r$ fixed and use the same $H_0$ plus
+boundary field in both partition functions on an auxiliary $M$-box.
+Positive association and plus-volume monotonicity bound every
+$H_0$ pair expectation below by the squared plus magnetization.
+Jensen's inequality for the added interior bonds gives the claim as
+$M\to\infty$, since $D_r$ has total mass one and the boundary weight
+per site tends to zero by summability. Combining the pressure estimates
+and using $e_n(H_1)\le\tau e_n(K_R)$ yields
+\begin{align}
+ 0<m_+(\theta)^2
+ \le C_d r^{-d}\chi_n^{\rm unif}(\tau)+\tau e_n(K_R)/\delta .
+\end{align}
+By the magnetization inequality \cite[Theorem~2.1(1)]{sharpness},
+\begin{align}
+ m_+(\theta)^2\ge 1-(\tau_c/\theta)^2
+   =\frac{\Delta_n(\theta+\tau_c)}{2\theta^2}
+   \ge\frac{\Delta_n}{2\theta}.
+\end{align}
+Here $\theta\le\tau\le 1+A_dR^{-d}$ and
+$\delta=c_{d,R}\Delta_n r^{-s}/2$. Multiplying the resulting
+inequality by $\Delta_n$ and taking the positive quadratic root gives
+\begin{align}
+ (\Delta_n)_+\le C_{d,R}\left(
+ \frac{\chi_n^{\rm unif}(\tau_{\Lambda_n}^{\rm pc})}{r^d}
+     +\sqrt{e_n(K_R)r^s}\right).
+\end{align}
+Using \eqref{eq:shift-matched}, choose $r$ to balance the two terms.
+Up to integer rounding, the choices are $n^{3/5}(\log n)^{2/5}$ for
+$d=1$, $n^{3/5}$ for $d=2$, and $n^{8/15}(\log n)^{2/15}$ for $d=3$.
+Substitution gives \eqref{eq:pc-shift-upper}.
+
+To conclude convergence, for each fixed $0<\tau<\tau_c$,
+subcritical sharpness \cite[Theorem~2.1(2)]{sharpness} and domain
+monotonicity bound $\chi_n^{\rm unif}(\tau)$ by the finite bulk
+susceptibility. By \eqref{eq:shift-matched} and monotonicity,
+$\tau_{\Lambda_n}^{\rm pc}>\tau$ eventually. This gives
+$\liminf_n\tau_{\Lambda_n}^{\rm pc}\ge\tau_c$ in every dimension.
+For $d<4$, \eqref{eq:pc-shift-upper} supplies the corresponding limsup.
+
+For $d=4$, $K_R=D_R$ has finite range and contains every nearest-neighbour
+bond. At any fixed $\tau>\tau_c$, slab percolation and equality of the
+free and wired bulk FK measures hold \cite[Sections~2.1--2.3]{bodineau-finite}.
+These are the hypotheses of the finite-range FK--Ising crossing-cluster
+estimate \cite[Section~3.2, Eq.~(3.6)]{crossing-cluster}.
+Take a central block of dyadic side between $n/8$ and $n/4$. For large
+$n$ all bonds touching the block lie in $\Lambda_n$. The estimate is
+uniform over the boundary wiring induced by bonds elsewhere in the
+free cube. Thus, with probability at least $1/2$, a cluster of the
+free cube contains at least $b_{\tau,R}V$ sites for some $b_{\tau,R}>0$.
+The Edwards--Sokal identity gives
+$\chi_n^{\rm unif}(\tau)=V^{-1}\E_{\rm FK}\sum_{\mathcal C}|\mathcal C|^2
+\ge b_{\tau,R}^2V/2$, the sum running over the clusters of the free cube.
+Since \eqref{eq:shift-matched} gives
+$\chi_n^{\rm unif}(\tau_{\Lambda_n}^{\rm pc})=O_R(n^2\sqrt{\log n})=o(V)$,
+monotonicity puts $\tau_{\Lambda_n}^{\rm pc}<\tau$ eventually for every
+fixed $\tau>\tau_c$. This proves convergence in dimension four.
+\end{proof}
+
+\section*{AI Statement}
+
+This document is generated with a collaboration with ChatGPT-Astra 6.0 and ChatGPT-Astra 6.2.
+
+
+\begin{thebibliography}{99}
+\bibitem{base}
+J.~Park, \emph{Pseudocritical point of the spread-out Ising model with free
+boundaries at the upper critical dimension in $1\le d\le4$},
+GitHub preprint,
+\href{https://github.com/jiwoonGit/phi4/blob/main/FSS/FSS_FBC-dim-extension.pdf}{DOI:10.5281/zenodo.24167641} (2026).
+
+\bibitem{flores}
+E.~Flores-Sola, B.~Berche, R.~Kenna and M.~Weigel,
+\href{https://doi.org/10.1103/PhysRevLett.116.115701}
+{\emph{Role of Fourier modes in finite-size scaling above the upper
+critical dimension}}, Phys. Rev. Lett. \textbf{116} (2016), 115701.
+
+\bibitem{fisher-barber}
+M.~E.~Fisher and M.~N.~Barber,
+\href{https://doi.org/10.1103/PhysRevLett.28.1516}
+{\emph{Scaling theory for finite-size effects in the critical region}},
+Phys. Rev. Lett. \textbf{28} (1972), 1516--1519.
+
+\bibitem{brezin-zinnjustin}
+E.~Br\'ezin and J.~Zinn-Justin,
+\href{https://doi.org/10.1016/0550-3213(85)90379-7}
+{\emph{Finite size effects in phase transitions}},
+Nucl. Phys. B \textbf{257} (1985), 867--893.
+
+\bibitem{rudnick}
+J.~Rudnick, G.~Gaspari and V.~Privman,
+\href{https://doi.org/10.1103/PhysRevB.32.7594}
+{\emph{Effect of boundary conditions on the critical behavior of a
+finite high-dimensional Ising model}}, Phys. Rev. B \textbf{32}
+(1985), 7594--7597.
+
+\bibitem{wittmann}
+M.~Wittmann and A.~P.~Young,
+\href{https://doi.org/10.1103/PhysRevE.90.062137}
+{\emph{Finite-size scaling above the upper critical dimension}},
+Phys. Rev. E \textbf{90} (2014), 062137.
+
+\bibitem{honchar}
+Yu.~Honchar, B.~Berche, Yu.~Holovatch and R.~Kenna,
+\href{https://doi.org/10.5488/CMP.27.13603}
+{\emph{When correlations exceed system size: finite-size scaling in
+free boundary conditions above the upper critical dimension}},
+Condens. Matter Phys. \textbf{27} (2024), 13603.
+
+\bibitem{luijten}
+E.~Luijten and H.~W.~J.~Bl\"ote,
+\href{https://doi.org/10.1103/PhysRevB.56.8945}
+{\emph{Classical critical behavior of spin models with long-range
+interactions}}, Phys. Rev. B \textbf{56} (1997), 8945--8958.
+
+\bibitem{lv}
+J.-P.~Lv, W.~Xu, Y.~Sun, K.~Chen and Y.~Deng,
+\href{https://doi.org/10.1093/nsr/nwaa212}
+{\emph{Finite-size scaling of $O(n)$ systems at the upper critical
+dimensionality}}, Natl. Sci. Rev. \textbf{8} (2021), nwaa212.
+
+\bibitem{park-torus}
+J.~Park, \emph{Torus scaling limits and the plateau of the critical
+weakly coupled $|\varphi|^4$ model in $d\ge4$},
+\href{https://arxiv.org/abs/2511.06321}{arXiv:2511.06321} (2025).
+
+\bibitem{camia-jiang-newman}
+F.~Camia, J.~Jiang and C.~M.~Newman,
+\href{https://doi.org/10.1007/s00440-021-01041-9}
+{\emph{The effect of free boundary conditions on the Ising model in high
+dimensions}}, Probab. Theory Related Fields \textbf{181} (2021), 311--328.
+
+\bibitem{duminil-panis}
+H.~Duminil-Copin and R.~Panis,
+\href{https://doi.org/10.1007/s00220-025-05236-2}
+{\emph{New lower bounds for the (near) critical Ising and $\varphi^4$
+models' two-point functions}}, Comm. Math. Phys. \textbf{406}
+(2025), article~56.
+
+\bibitem{michta-park-slade}
+E.~Michta, J.~Park and G.~Slade,
+\href{https://doi.org/10.1002/cpa.22256}
+{\emph{Boundary conditions and universal finite-size scaling for the
+hierarchical $|\varphi|^4$ model in dimensions 4 and higher}},
+Comm. Pure Appl. Math. \textbf{78} (2025), 2001--2118.
+
+\bibitem{park-slade}
+J.~Park and G.~Slade,
+\href{https://doi.org/10.1007/s00023-025-01566-y}
+{\emph{Boundary conditions and the two-point function plateau for the
+hierarchical $|\varphi|^4$ model in dimensions 4 and higher}},
+Ann. Henri Poincar\'e \textbf{27} (2026), 1497--1561.
+
+\bibitem{liu-park-slade}
+Y.~Liu, J.~Park and G.~Slade,
+\href{https://doi.org/10.1103/xq7j-zll9}
+{\emph{Universal finite-size scaling in high-dimensional critical
+phenomena}}, Phys. Rev. E \textbf{113} (2026), 024143,
+\href{https://arxiv.org/abs/2412.08814}{arXiv:2412.08814}.
+
+\bibitem{park-bulk}
+J.~Park, \emph{Correlation function of the fractional spread-out Ising
+models at their upper critical dimension and critical temperature},
+preprint (2026), Theorem~1.
+
+\bibitem{lebowitz}
+J.~L.~Lebowitz,
+\href{https://cmsr.rutgers.edu/images/people/lebowitz_joel/publications/jll.pub_101.pdf}
+{\emph{GHS and other inequalities}}, Comm. Math. Phys. \textbf{35}
+(1974), 87--92.
+
+\bibitem{sharpness}
+H.~Duminil-Copin and V.~Tassion,
+\href{https://arxiv.org/abs/1502.03050}{\emph{A new proof of the sharpness
+of the phase transition for Bernoulli percolation and the Ising model}},
+Comm. Math. Phys. \textbf{343} (2016), 725--745.
+
+\bibitem{bodineau-finite}
+T.~Bodineau, \href{https://arxiv.org/abs/math/0409079}{\emph{Translation
+invariant Gibbs states for the Ising model}}, Probab. Theory Related
+Fields \textbf{135} (2006), 153--168.
+
+\bibitem{crossing-cluster}
+T.~Bodineau, D.~Ioffe and Y.~Velenik,
+\href{https://www.unige.ch/~velenik/papers/BIV01.pdf}{\emph{Winterbottom
+construction for finite range ferromagnetic models: an $L_1$-approach}},
+J. Stat. Phys. \textbf{105} (2001), 93--131.
+\end{thebibliography}
+\end{document}
