@@ -11,6 +11,7 @@ The two papers in [FSS](FSS/) study the spread-out Ising model on a cube of side
 ### Pseudocritical point and susceptibility
 
 The first paper constructs a renormalisation group flow with free boundary condition. It defines a finite-volume pseudocritical inverse temperature $\tau_n^{\mathrm{pc}}$ by requiring the effective potential of the principal mode to have zero curvature at the origin. At this point, the susceptibility of the total spin satisfies
+
 $$
 \chi_n^F(\tau_n^{\mathrm{pc}})
 = \frac{1}{V}{Var}_{\tau_n^{\mathrm{pc}}}^F\!\left(\sum_{x\in\Lambda_n}\sigma_x\right)
