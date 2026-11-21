@@ -20,7 +20,7 @@ $$
 
 In four dimensions, this gives $n^2\sqrt{\log n}$. The companion paper shows that $\tau_n^{\mathrm{pc}}\to\tau_c$ and that the shift $\tau_n^{\mathrm{pc}}-\tau_c$ is at least $c_{d,R}n^{-d/2}$ for all sufficiently large $n$.
 
-[Read the susceptibility paper (PDF)](FSS/FSS_FBC-dim-extension.pdf) · [LaTeX source](FSS/FSS_FBC-dim-extension.tex)
+[Read the susceptibility paper (PDF)](FSS/FSS_FBC-dim-extension.pdf) · [LaTeX source](FSS/FSS_FBC-dim-extension.tex) · [Abstract and main theorem](https://jiwoon-park-math.github.io/free-boundary-pseudocritical-point.html)
 
 ### Gaussian and non-Gaussian fluctuations
 
@@ -33,7 +33,7 @@ The companion paper tests the spin field against a smooth, nonzero function $F$ 
 
 For example, in $d=4$ the lowest sine mode $(1,1,1,1)$ has a quartic limit, while the $(3,1,1,1)$ sine mode has a Gaussian limit.
 
-[Read the spin observables paper (PDF)](FSS/FSS_FBC-obs-extension.pdf) · [LaTeX source](FSS/FSS_FBC-obs-extension.tex)
+[Read the spin observables paper (PDF)](FSS/FSS_FBC-obs-extension.pdf) · [LaTeX source](FSS/FSS_FBC-obs-extension.tex) · [Abstract and main theorem](https://jiwoon-park-math.github.io/free-boundary-spin-observables.html)
 
 ## Infinite-volume critical two-point functions
 
